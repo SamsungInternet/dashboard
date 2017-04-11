@@ -43,10 +43,16 @@ function setupMediumChart(data) {
     };
 
     var options = {
-        axisX: {showGrid: false, labelInterpolationFnc: function(value) {
-            // Only use one in every 14 days
-            return (labelCount++ % 14 === 0) ? value : null;
-        }}, // type: Chartist.AutoScaleAxis
+        labelOffset: 50,
+        axisX: {
+            showGrid: false,
+            labelInterpolationFnc: function(value) {
+                // Display one label every 2 weeks
+                if (labelCount++ % 14 === 0) {
+                    return moment(value).format('D/M/Y');
+                }
+            }
+        },
         axisY: {onlyInteger: true},
         seriesBarDistance: 5,
         showPoint: false,
