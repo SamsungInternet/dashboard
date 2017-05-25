@@ -1,5 +1,5 @@
 body {
-  background: #333;
+  background: #222;
   color: #fefefe;
   font-family: Helvetica, Arial, sans-serif;
   padding: 0;
@@ -22,12 +22,16 @@ header img {
   padding: 10px 30px 10px 0;
 }
 
-.title-and-last-updated {
+header .logo {
+  flex-basis: 280px;
+}
+
+header .title-and-last-updated {
   min-width: 300px;
 }
 
 h1 {
-  margin: 10px 0;
+  margin: 15px 0 10px 0;
   font-weight: normal;
 }
 
@@ -35,7 +39,7 @@ h2 {
   margin: 0.5em 0;
   font-weight: normal;
   font-style: italic;
-  border-top: 1px solid #ccc;
+  border-top: 1px dotted #ccc;
   padding-top: 0.5em;
 }
 
@@ -99,6 +103,10 @@ footer p {
 
 .ct-chart .ct-label {
   color: #ffffff;
+}
+
+.ct-chart .ct-grid {
+  stroke: #555;
 }
 
 .key span {
