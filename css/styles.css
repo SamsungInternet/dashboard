@@ -7,14 +7,14 @@ body {
 }
 
 header {
-  height: 90px;
+  min-height: 90px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
 }
 
 header > div {
-  height: 70px;
+  min-height: 70px;
 }
 
 header img {
@@ -31,6 +31,19 @@ h1 {
   font-weight: normal;
 }
 
+h2 {
+  margin: 0.5em 0;
+  font-weight: normal;
+  font-style: italic;
+  border-top: 1px solid #ccc;
+  padding-top: 0.5em;
+}
+
+h3 {
+  margin: 0.5em 0;
+  font-weight: normal;
+}
+
 .title-and-last-updated p {
   color: #ccc;
   font-size: 0.9em;
@@ -42,14 +55,66 @@ main {
   padding: 10px;
 }
 
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 30px 20px;
+}
+
+.numbers div {
+  text-align: center;
+  flex-basis: 120px;
+  flex-grow: 2;
+}
+
+.numbers h3 {
+  font-size: 2.5em;
+  margin-bottom: 0.25em;
+}
+
+.arrow {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.arrow.up {
+  color: #59922b;
+}
+
+.arrow.down {
+  color: #d70206;
+}
+
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  margin-top: 1.5em;
 }
 
 footer p {
   text-align: center;
   color: #aaa;
   font-size: 0.9em;
+}
+
+/* Charts */
+
+.ct-chart .ct-label {
+  color: #ffffff;
+}
+
+.key span {
+  margin-left: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.key .colour1 {
+  color: #d70206;
+}
+
+.key .colour2 {
+  color: #f05b4f;
+}
+
+.key .colour3 {
+  color: #f4c63d;
 }

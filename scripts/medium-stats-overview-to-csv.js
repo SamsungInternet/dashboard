@@ -7,13 +7,13 @@
  * For now, these values need to be updated each time!
  */
 // Max value of the Minutes Read Graph
-var minutesReadMaxAxis = 459
+var minutesReadMaxAxis = 6886;
 // Max value of the Views Graph
-var viewsMaxAxis = 466
+var viewsMaxAxis = 4339;
 // Max value of the Visitors Graph
-var visitorsMaxAxis = 373
+var visitorsMaxAxis = 4014;
 // First date of the graph (US Format)
-var initialDay = new Date('03/15/2017')
+var initialDay = new Date('04/25/2017')
 
 // Days in the graphs
 var days = 30;
@@ -42,12 +42,12 @@ function download(filename, text) {
 // Generates CSV format string with dates and values
 function generateCSVContent() {
 
-  var content = 'Date, Minutes Read, Views, Visitors\n'; 
+  var content = 'Date, Minutes Read, Views, Visitors\n';
 
   for (var i=0; i < days; i++) {
-    content += initialDay.addDays(i).toLocaleDateString('en-US') + ',' + 
-        Math.round(minutesReadValues[i]) + ',' + 
-        viewsValues[i] + ',' + 
+    content += initialDay.addDays(i).toLocaleDateString('en-US') + ',' +
+        Math.round(minutesReadValues[i]) + ',' +
+        viewsValues[i] + ',' +
         visitorsValues[i] + '\n';
   }
   return content
@@ -58,11 +58,11 @@ function getGraphMaxHeight(graph) {
 
   var heights = [];
   var rects = graph.getElementsByTagName('rect');
-  
+
   for (var i=0; i < rects.length; i++) {
     var rect = rects[i];
     heights.push( rect.getAttribute('height') );
-  }; 
+  };
 
   return Math.max(...heights);
 }
