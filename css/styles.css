@@ -1,0 +1,55 @@
+body {
+  background: #333;
+  color: #fefefe;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  height: 90px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header > div {
+  height: 70px;
+}
+
+header img {
+  float: left;
+  padding: 10px 30px 10px 0;
+}
+
+.title-and-last-updated {
+  min-width: 300px;
+}
+
+h1 {
+  margin: 10px 0;
+  font-weight: normal;
+}
+
+.title-and-last-updated p {
+  color: #ccc;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 0;
+}
+
+main {
+  padding: 10px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9em;
+}
