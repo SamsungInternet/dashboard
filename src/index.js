@@ -6,6 +6,26 @@ Papa.parse('data/medium-stats-overview-2017-05-25.csv', {
     }
 });
 
+function setupSurveyChart() {
+
+    var data = {
+        series: [27, 63]
+    };
+
+    var sum = function(a, b) { return a + b };
+
+    var options = {
+        width: 250,
+        height: 250,
+        fullWidth: false,
+        labelInterpolationFnc: function(value) {
+            return value + '%';
+        }
+    };
+
+    new Chartist.Pie('#survey-chart', data, options);
+}
+
 function setupMediumChart(mediumData) {
 
     // Date, Minutes Read, Views, Visitors
@@ -59,3 +79,5 @@ function setupMediumChart(mediumData) {
 
     new Chartist.Line('#medium-chart', data, options);
 }
+
+setupSurveyChart();

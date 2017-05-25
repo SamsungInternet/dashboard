@@ -109,20 +109,44 @@ footer p {
   stroke: #555;
 }
 
+.key {
+  margin-bottom: 30px;
+}
+
 .key span {
   margin-left: 20px;
   font-size: 1.2em;
   font-weight: bold;
 }
 
-.key .colour1 {
+#medium-chart + .key .colour1 {
   color: #d70206;
 }
 
-.key .colour2 {
+#medium-chart + .key .colour2 {
   color: #f05b4f;
 }
 
-.key .colour3 {
+#medium-chart + .key .colour3 {
   color: #f4c63d;
+}
+
+#survey-chart {
+  margin: 10px 0 0 10px;
+}
+
+#survey-chart .ct-series-a .ct-slice-pie {
+  fill: #f4c63d;
+}
+
+#survey-chart .ct-label {
+  fill: #000;
+}
+
+#survey-chart + .key .colour1 {
+  color: #f4c63d;
+}
+
+#survey-chart + .key .colour2 {
+  color: #f05b4f;
 }
