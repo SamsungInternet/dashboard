@@ -39,6 +39,7 @@ function setupMediumChart(mediumData) {
 
     var options = {
         labelOffset: 50,
+        height: 240,
         axisX: {
             showGrid: false,
             labelInterpolationFnc: function(value) {
@@ -48,7 +49,9 @@ function setupMediumChart(mediumData) {
                 }
             }
         },
-        axisY: {onlyInteger: true},
+        axisY: {
+            onlyInteger: true
+        },
         seriesBarDistance: 5,
         showPoint: false,
         lineSmooth: false
