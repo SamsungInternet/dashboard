@@ -4,6 +4,10 @@ var statsJSONPath = 'data/stats-2017-06-13.json';
 var upArrow = '↑';
 var downArrow = '↓';
 
+function isInteger(number) {
+    return number % 1 === 0;
+}
+
 function setupSurveyChart() {
 
     var data = {
@@ -109,28 +113,36 @@ function updateStats(data) {
         document.getElementById('last-updated').innerHTML = moment(data.updated).format('DD MMMM YYYY');
     }
 
-    updateAudienceStats('medium', data.medium);
-    updateAudienceStats('twitter', data.twitter);
-    updateAudienceStats('facebook', data.facebook);
-    updateAudienceStats('instagram', data.instagram);
+    updateStatWithChange('medium', 'followers', data.medium.audience);
+    updateStatWithChange('twitter', 'followers', data.twitter.audience);
+    updateStatWithChange('facebook', 'followers', data.facebook.audience);
+    updateStatWithChange('instagram', 'followers', data.instagram.audience);
+
+    updateStatWithChange('twitter', 'impressions', data.twitter.engagement);
+    updateStatWithChange('twitter', 'mentions', data.twitter.engagement);
+    updateStatWithChange('facebook', 'likes', data.facebook.engagement);
+    updateStatWithChange('medium', 'views', data.medium.engagement);
 
     console.log('Updated stats from JSON data', data);
 
 }
 
-function updateAudienceStats(platformName, data) {
+function updateStatWithChange(platformName, dataId, data) {
 
-    document.getElementById(platformName + '-followers').innerHTML = data.followers.count;        
-    document.getElementById(platformName + '-followers-change').innerHTML = data.followers.change;
+    document.getElementById(`${platformName}-${dataId}`).innerHTML = data[dataId].count;
 
-    var changeLabelEl = document.getElementById(platformName + '-followers-change-label');
-    if (changeLabelEl && data.followers['change-label']) {
+    // We presume change value is a percentage if number is non-integer (that's the format we should follow)
+    document.getElementById(`${platformName}-${dataId}-change`).innerHTML = data[dataId].change + 
+        (isInteger(data[dataId].change) ? '' : '%');
+    
+    var changeLabelEl = document.getElementById(`${platformName}-${dataId}-change-label`);
+    if (changeLabelEl && data[dataId]['change-label']) {
         changeLabelEl.innerHTML = data.followers['change-label'];
     } 
 
-    var arrowEl = document.getElementById(platformName + '-followers-change-arrow'); 
+    var arrowEl = document.getElementById(`${platformName}-${dataId}-change-arrow`); 
 
-    if (data.followers.change > -1) {
+    if (data[dataId].change > -1) {
         arrowEl.innerHTML = upArrow;
         arrowEl.classList.add('up');
     } else {

@@ -1,42 +1,68 @@
 {
   "updated": "2017-06-13",
   "medium": {
-    "followers": {
-      "count": 862,
-      "change": 87,
-      "change-label": "19 days"
+    "audience": {
+      "followers": {
+        "count": 862,
+        "change": 87,
+        "change-label": "19 days"
+      }
     },
-    "last-30-days": {
-      "views": 28451
+    "engagement": {
+      "views": {
+        "count": 28451,
+        "change": -18.7,
+        "change-label": "19 days"
+      }
     }
   },
   "twitter": {
-    "followers": {
-      "count": 817,
-      "change": 86
+    "audience": {
+      "followers": {
+        "count": 817,
+        "change": 86
+      }
     },
-    "last-28-days": {
-      "impressions": 66600,
-      "mentions": 183
+    "engagement": {
+      "impressions": {
+        "count": 66600,
+        "change": -28.8
+      },
+      "mentions": {
+        "count": 183,
+        "change": -9.0
+      }
     }
   },
   "facebook": {
-    "followers": {
-      "count": 168,
-      "change": 75
+    "audience": {
+      "followers": {
+        "count": 168,
+        "change": 75
+      },
+      "reach": {
+        "count": 2101,
+        "change": -63
+      }
     },
-    "last-28-days": {
-      "likes": 74,
-      "pageviews": 186,
-      "engagements": 390,
-      "reach": 2101
+    "engagement": {
+      "likes": {
+        "count": 74,
+        "change": -10
+      },
+      "engagements": {
+        "count": 390,
+        "change": -38 
+      }
     }
   },
   "instagram": {
-    "followers": {
-      "count": 19,
-      "change": 5,
-      "change-label": "7 days"
+    "audience": {
+      "followers": {
+        "count": 19,
+        "change": 5,
+        "change-label": "7 days"
+      }
     }
   }
 }
