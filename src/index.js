@@ -1,10 +1,8 @@
-Papa.parse('data/medium-stats-overview-2017-05-25.csv', {
-    download: true,
-    complete: function(data) {
-        console.log('Medium data', data);
-        setupMediumChart(data);
-    }
-});
+var mediumStatsCSVPath = 'data/medium-stats-overview-2017-05-25.csv';
+var statsJSONPath = 'data/stats-2017-06-13.json';
+
+var upArrow = '↑';
+var downArrow = '↓';
 
 function setupSurveyChart() {
 
@@ -24,6 +22,16 @@ function setupSurveyChart() {
     };
 
     new Chartist.Pie('#survey-chart', data, options);
+}
+
+function parseMediumCSV() {
+    Papa.parse(mediumStatsCSVPath, {
+        download: true,
+        complete: function(data) {
+            console.log('Medium data', data);
+            setupMediumChart(data);
+        }
+    });
 }
 
 function setupMediumChart(mediumData) {
@@ -80,4 +88,59 @@ function setupMediumChart(mediumData) {
     new Chartist.Line('#medium-chart', data, options);
 }
 
+function parseStatsJSON() {
+
+    fetch(statsJSONPath)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            return updateStats(data);
+        })
+        .catch(function(error) {
+            console.error('Error parsing stats JSON', error);
+        });
+
+}
+
+function updateStats(data) {
+
+    if (data.updated) {
+        document.getElementById('last-updated').innerHTML = moment(data.updated).format('DD MMMM YYYY');
+    }
+
+    updateAudienceStats('medium', data.medium);
+    updateAudienceStats('twitter', data.twitter);
+    updateAudienceStats('facebook', data.facebook);
+    updateAudienceStats('instagram', data.instagram);
+
+    console.log('Updated stats from JSON data', data);
+
+}
+
+function updateAudienceStats(platformName, data) {
+
+    document.getElementById(platformName + '-followers').innerHTML = data.followers.count;        
+    document.getElementById(platformName + '-followers-change').innerHTML = data.followers.change;
+
+    var changeLabelEl = document.getElementById(platformName + '-followers-change-label');
+    if (changeLabelEl && data.followers['change-label']) {
+        changeLabelEl.innerHTML = data.followers['change-label'];
+    } 
+
+    var arrowEl = document.getElementById(platformName + '-followers-change-arrow'); 
+
+    if (data.followers.change > -1) {
+        arrowEl.innerHTML = upArrow;
+        arrowEl.classList.add('up');
+    } else {
+        arrowEl.innerHTML = downArrow;
+        arrowEl.classList.add('down');
+    }
+
+}
+
+
 setupSurveyChart();
+parseMediumCSV();
+parseStatsJSON();

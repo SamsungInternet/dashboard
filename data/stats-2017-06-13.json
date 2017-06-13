@@ -1,0 +1,42 @@
+{
+  "updated": "2017-06-13",
+  "medium": {
+    "followers": {
+      "count": 862,
+      "change": 87,
+      "change-label": "19 days"
+    },
+    "last-30-days": {
+      "views": 28451
+    }
+  },
+  "twitter": {
+    "followers": {
+      "count": 817,
+      "change": 86
+    },
+    "last-28-days": {
+      "impressions": 66600,
+      "mentions": 183
+    }
+  },
+  "facebook": {
+    "followers": {
+      "count": 168,
+      "change": 75
+    },
+    "last-28-days": {
+      "likes": 74,
+      "pageviews": 186,
+      "engagements": 390,
+      "reach": 2101
+    }
+  },
+  "instagram": {
+    "followers": {
+      "count": 19,
+      "change": 5,
+      "change-label": "7 days"
+    }
+  }
+}

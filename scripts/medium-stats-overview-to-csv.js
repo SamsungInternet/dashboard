@@ -4,16 +4,17 @@
  */
 
 /**
- * For now, these values need to be updated each time!
+ * These are just an estimate of the max now and don't necessarily need to be updated each time?
  */
 // Max value of the Minutes Read Graph
-var minutesReadMaxAxis = 6886;
+var minutesReadMaxAxis = 6000;
 // Max value of the Views Graph
-var viewsMaxAxis = 4339;
+var viewsMaxAxis = 5000;
 // Max value of the Visitors Graph
-var visitorsMaxAxis = 4014;
+var visitorsMaxAxis = 4000;
+
 // First date of the graph (US Format)
-var initialDay = new Date('04/25/2017')
+var initialDay = new Date('05/14/2017')
 
 // Days in the graphs
 var days = 30;
