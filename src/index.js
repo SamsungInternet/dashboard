@@ -7,6 +7,9 @@ var eventSurveyAwarePercent = 40;
 var upArrow = '↑';
 var downArrow = '↓';
 
+var labelCount = 0;
+
+
 function isInteger(number) {
     return typeof number === 'number' && number % 1 === 0;
 }
@@ -39,10 +42,11 @@ function setupSurveyChart(chartId, awarePercent) {
 function setupSurveyCharts() {
     setupSurveyChart('twitter', twitterSurveyAwarePercent);
     setupSurveyChart('event', eventSurveyAwarePercent);
-}
 
-function setupEventSurveyChart() {
-    
+    window.addEventListener('resize', function(event) {
+        labelCount = 0;
+    });
+
 }
 
 function parseMediumCSV() {
@@ -65,8 +69,6 @@ function setupMediumChart(mediumData) {
     var dailyUniqueVisitors = [];
 
     var rows = mediumData.data.slice(1, mediumData.data.length - 1);
-
-    var labelCount = 0;
 
     rows.forEach(function(row) {
         if (row[2] !== 'null') {
@@ -92,8 +94,8 @@ function setupMediumChart(mediumData) {
         axisX: {
             showGrid: false,
             labelInterpolationFnc: function(value) {
-                // Display one label every 2 weeks
-                if (labelCount++ % 14 === 0) {
+                // Display one label every week
+                if (labelCount++ % 7 === 0) {
                     return moment(value).format('D/M/Y');
                 }
             }
@@ -106,7 +108,7 @@ function setupMediumChart(mediumData) {
         lineSmooth: false
     };
 
-    new Chartist.Line('#medium-chart', data, options);
+    Chartist.Line('#medium-chart', data, options);
 }
 
 function parseStatsJSON() {
