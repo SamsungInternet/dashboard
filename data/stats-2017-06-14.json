@@ -68,5 +68,49 @@
         "change-label": "8 days"
       }
     }
+  },
+  "seo": {
+    "webvr": {
+      "count": 35,
+      "change": 0,
+      "change-label": "Change not yet recorded"
+    },
+    "webpayments": {
+      "count": 36,
+      "change": 0,
+      "change-label": "Change not yet recorded"
+    },
+    "pwas": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    },
+    "physicalweb": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    }
+  },
+  "twitterreach": {
+    "pwas": {
+      "count": 302632,
+      "change": 0,
+      "change-label": "Change not yet recorded"
+    },
+    "webvr": {
+      "count": 235594,
+      "change": 0,
+      "change-label": "Change not yet recorded"
+    },
+    "webpayments": {
+      "count": 387978,
+      "change": 0,
+      "change-label": "Change not yet recorded"
+    },
+    "physicalweb": {
+      "count": 34635,
+      "change": 0,
+      "change-label": "Change not yet recorded"
+    }
   }
 }

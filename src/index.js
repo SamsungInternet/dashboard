@@ -8,7 +8,7 @@ var upArrow = '↑';
 var downArrow = '↓';
 
 function isInteger(number) {
-    return number % 1 === 0;
+    return typeof number === 'number' && number % 1 === 0;
 }
 
 // If tens of thousands or more, use format like 12.3K
@@ -142,6 +142,16 @@ function updateStats(data) {
     updateStatWithChange('facebook', 'engagements', data.facebook.engagement);
     updateStatWithChange('medium', 'views', data.medium.engagement);
 
+    updateStatWithChange('twitterreach', 'webvr', data.twitterreach);
+    updateStatWithChange('twitterreach', 'webpayments', data.twitterreach);
+    updateStatWithChange('twitterreach', 'pwas', data.twitterreach);
+    updateStatWithChange('twitterreach', 'physicalweb', data.twitterreach);
+
+    updateStatWithChange('seo', 'webvr', data.seo);
+    updateStatWithChange('seo', 'webpayments', data.seo);
+    updateStatWithChange('seo', 'pwas', data.seo);
+    updateStatWithChange('seo', 'physicalweb', data.seo);
+
     document.getElementById('total-followers').innerHTML = formatCountNumber(
         data.medium.audience.followers.count +
         data.twitter.audience.followers.count + 
@@ -157,20 +167,33 @@ function updateStats(data) {
 
 }
 
-function updateStatWithChange(platformName, dataId, data) {
+function updateStatWithChange(groupName, dataId, data) {
 
-    document.getElementById(`${platformName}-${dataId}`).innerHTML = formatCountNumber(data[dataId].count);
+    document.getElementById(`${groupName}-${dataId}`).innerHTML = formatCountNumber(data[dataId].count);
 
-    // We presume change value is a percentage if number is non-integer (that's the format we should follow)
-    document.getElementById(`${platformName}-${dataId}-change`).innerHTML = data[dataId].change + 
-        (isInteger(data[dataId].change) ? '' : '%');
+    if (typeof data[dataId].change !== 'undefined') {
+
+        if (typeof data[dataId].change === 'string') {
+
+            document.getElementById(`${groupName}-${dataId}-change`).innerHTML = data[dataId].change;
+
+        } else {
+
+            // We presume change value is a percentage if number is non-integer (that's the format we should follow)
+            document.getElementById(`${groupName}-${dataId}-change`).innerHTML = data[dataId].change + 
+                (isInteger(data[dataId].change) ? '' : '%');
+
+        }
     
-    var changeLabelEl = document.getElementById(`${platformName}-${dataId}-change-label`);
-    if (changeLabelEl && data[dataId]['change-label']) {
-        changeLabelEl.innerHTML = data.followers['change-label'];
-    } 
+    }
 
-    var arrowEl = document.getElementById(`${platformName}-${dataId}-change-arrow`); 
+    var changeLabelEl = document.getElementById(`${groupName}-${dataId}-change-label`);
+
+    if (changeLabelEl && data[dataId]['change-label']) {
+        changeLabelEl.innerHTML = data[dataId]['change-label'];
+    } 
+  
+    var arrowEl = document.getElementById(`${groupName}-${dataId}-change-arrow`); 
 
     if (data[dataId].change > -1) {
         arrowEl.innerHTML = upArrow;
