@@ -26,3 +26,6 @@ Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json`.
 
 For survey feedback, see [the Google spreadsheet here](https://docs.google.com/spreadsheets/d/1SxnLKkhqOPZPCEYzX0S0WVPaNN6Hs5vFhOi4Py8bLHs/edit#gid=2048114756).
 
+## How to update the search rankings
+
+I used [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/) for each search term.
