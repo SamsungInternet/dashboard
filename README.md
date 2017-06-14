@@ -26,7 +26,7 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 ### Medium graph
 
 * Visit [medium.com/samsung-internet-dev/stats/overview](https://medium.com/samsung-internet-dev/stats/overview)
-* Update `scripts/medium-stats-overview-to-csv.js` with the `initialDay` (also the `minutesReadMaxAxis`, `viewsMaxAxis` and `visitorsMaxAxis` if necessary?).
+* Update `scripts/medium-stats-overview-to-csv.js` with the new `initialDay`.
 * Paste the content of `scripts/medium-stats-overview-to-csv.js` into the Chrome debug console.
 * Copy/move the downloaded CSV file to the `data` directory & update `src/index.js` with the new filename.
 

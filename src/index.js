@@ -149,6 +149,7 @@ function updateStats(data) {
     updateStatWithChange('twitterreach', 'pwas', data.twitterreach);
     updateStatWithChange('twitterreach', 'physicalweb', data.twitterreach);
 
+    // TODO also make 'Top Samsung entry ranking' dynamic
     updateStatWithChange('seo', 'webvr', data.seo);
     updateStatWithChange('seo', 'webpayments', data.seo);
     updateStatWithChange('seo', 'pwas', data.seo);
