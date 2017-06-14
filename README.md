@@ -23,14 +23,14 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 * To get the SEO rankings, you can use [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/).
 * To get the Twitter reach stats, you can use [tweetreach.com](https://tweetreach.com).
 
-## How to update the Medium graph
+### Medium graph
 
 * Visit [medium.com/samsung-internet-dev/stats/overview](https://medium.com/samsung-internet-dev/stats/overview)
 * Update `scripts/medium-stats-overview-to-csv.js` with the `initialDay` (also the `minutesReadMaxAxis`, `viewsMaxAxis` and `visitorsMaxAxis` if necessary?).
 * Paste the content of `scripts/medium-stats-overview-to-csv.js` into the Chrome debug console.
 * Copy/move the downloaded CSV file to the `data` directory & update `src/index.js` with the new filename.
 
-## How to update the survey pie charts
+### Survey pie charts
 
 * For our event survey feedback, see [the Google spreadsheet here](https://docs.google.com/spreadsheets/d/1SxnLKkhqOPZPCEYzX0S0WVPaNN6Hs5vFhOi4Py8bLHs/edit#gid=2048114756).
 * Update the variable at the top of `index.js`.
