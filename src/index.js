@@ -1,5 +1,8 @@
-var mediumStatsCSVPath = 'data/medium-stats-overview-2017-05-25.csv';
-var statsJSONPath = 'data/stats-2017-06-13.json';
+var mediumStatsCSVPath = 'data/medium-stats-overview-2017-06-14.csv';
+var statsJSONPath = 'data/stats-2017-06-14.json';
+
+var twitterSurveyAwarePercent = 37;
+var eventSurveyAwarePercent = 40;
 
 var upArrow = '↑';
 var downArrow = '↓';
@@ -8,10 +11,15 @@ function isInteger(number) {
     return number % 1 === 0;
 }
 
-function setupSurveyChart() {
+// If tens of thousands or more, use format like 12.3K
+function formatCountNumber(number) {
+    return number >= 10000 ? (number/1000).toFixed(1) + 'K' : number;
+}
+
+function setupSurveyChart(chartId, awarePercent) {
 
     var data = {
-        series: [27, 63]
+        series: [awarePercent, 100 - awarePercent]
     };
 
     var sum = function(a, b) { return a + b };
@@ -25,7 +33,16 @@ function setupSurveyChart() {
         }
     };
 
-    new Chartist.Pie('#survey-chart', data, options);
+    new Chartist.Pie(`#${chartId}-survey-chart`, data, options);
+}
+
+function setupSurveyCharts() {
+    setupSurveyChart('twitter', twitterSurveyAwarePercent);
+    setupSurveyChart('event', eventSurveyAwarePercent);
+}
+
+function setupEventSurveyChart() {
+    
 }
 
 function parseMediumCSV() {
@@ -116,12 +133,25 @@ function updateStats(data) {
     updateStatWithChange('medium', 'followers', data.medium.audience);
     updateStatWithChange('twitter', 'followers', data.twitter.audience);
     updateStatWithChange('facebook', 'followers', data.facebook.audience);
+    updateStatWithChange('facebook', 'reach', data.facebook.audience);
     updateStatWithChange('instagram', 'followers', data.instagram.audience);
 
     updateStatWithChange('twitter', 'impressions', data.twitter.engagement);
     updateStatWithChange('twitter', 'mentions', data.twitter.engagement);
-    updateStatWithChange('facebook', 'likes', data.facebook.engagement);
+    updateStatWithChange('facebook', 'views', data.facebook.engagement);
+    updateStatWithChange('facebook', 'engagements', data.facebook.engagement);
     updateStatWithChange('medium', 'views', data.medium.engagement);
+
+    document.getElementById('total-followers').innerHTML = formatCountNumber(
+        data.medium.audience.followers.count +
+        data.twitter.audience.followers.count + 
+        data.facebook.audience.followers.count +
+        data.instagram.audience.followers.count);
+
+    document.getElementById('total-impressions').innerHTML = formatCountNumber(
+        data.twitter.engagement.impressions.count +
+        data.facebook.engagement.views.count +
+        data.medium.engagement.views.count);
 
     console.log('Updated stats from JSON data', data);
 
@@ -129,7 +159,7 @@ function updateStats(data) {
 
 function updateStatWithChange(platformName, dataId, data) {
 
-    document.getElementById(`${platformName}-${dataId}`).innerHTML = data[dataId].count;
+    document.getElementById(`${platformName}-${dataId}`).innerHTML = formatCountNumber(data[dataId].count);
 
     // We presume change value is a percentage if number is non-integer (that's the format we should follow)
     document.getElementById(`${platformName}-${dataId}-change`).innerHTML = data[dataId].change + 
@@ -152,7 +182,6 @@ function updateStatWithChange(platformName, dataId, data) {
 
 }
 
-
-setupSurveyChart();
-parseMediumCSV();
 parseStatsJSON();
+parseMediumCSV();
+setupSurveyCharts();

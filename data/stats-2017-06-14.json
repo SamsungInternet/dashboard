@@ -1,0 +1,72 @@
+{
+  "updated": "2017-06-14",
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 863,
+        "change": 88,
+        "change-label": "20 days"
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 29022,
+        "change": -17.1,
+        "change-label": "20 days"
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 819,
+        "change": 80
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 62700,
+        "change": -37.0
+      },
+      "mentions": {
+        "count": 176,
+        "change": -13.3
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 170,
+        "change": 77
+      },
+      "reach": {
+        "count": 2414,
+        "change": -58.0
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 75,
+        "change": -9.0
+      },
+      "views": {
+        "count": 185,
+        "change": 3.0
+      },
+      "engagements": {
+        "count": 411,
+        "change": -35.0
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 20,
+        "change": 6,
+        "change-label": "8 days"
+      }
+    }
+  }
+}

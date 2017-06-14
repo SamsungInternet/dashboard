@@ -6,6 +6,10 @@ body {
   margin: 0;
 }
 
+a {
+  color: #aaa;
+}
+
 header {
   min-height: 90px;
   padding: 10px;
@@ -131,22 +135,34 @@ footer p {
   color: #f4c63d;
 }
 
-#survey-chart {
+.surveys {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 30px 20px;
+}
+
+.survey {
+  text-align: center;
+  flex-basis: 120px;
+  flex-grow: 2;
+}
+
+.survey {
   margin: 10px 0 5px 10px;
 }
 
-#survey-chart .ct-series-a .ct-slice-pie {
+.survey .ct-series-a .ct-slice-pie {
   fill: #f4c63d;
 }
 
-#survey-chart .ct-label {
+.survey .ct-label {
   fill: #000;
 }
 
-#survey-chart + .key .colour1 {
+.survey .key .colour1 {
   color: #f4c63d;
 }
 
-#survey-chart + .key .colour2 {
+.survey .key .colour2 {
   color: #f05b4f;
 }

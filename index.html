@@ -6,10 +6,9 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="lib/chartist.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="lib/papaparse.js" defer></script>
-    <script src="lib/moment.js" defer></script>
-    <script src="lib/chartist.js" defer></script>
-    <script src="src/index.js" defer></script>
+    <script src="lib/papaparse.js"></script>
+    <script src="lib/moment.js"></script>
+    <script src="lib/chartist.js"></script>
   </head>
   <body>
     <header>
@@ -37,7 +36,12 @@
         <div>
           <h3 id="facebook-followers"></h3>
           <p>Facebook followers</p>
-          <p class="change"><span id="facebook-followers-change-arrow" class="arrow"></span> <span id="facebook-followers-change">94</span> (28 days)</p>
+          <p class="change"><span id="facebook-followers-change-arrow" class="arrow"></span> <span id="facebook-followers-change"></span> (28 days)</p>
+        </div>
+        <div>
+          <h3 id="facebook-reach"></h3>
+          <p>Facebook reach</p>
+          <p class="change"><span id="facebook-reach-change-arrow" class="arrow"></span> <span id="facebook-reach-change"></span> (28 days)</p>
         </div>
         <div>
           <h3 id="instagram-followers"></h3>
@@ -45,6 +49,7 @@
           <p class="change"><span id="instagram-followers-change-arrow" class="arrow"></span> <span id="instagram-followers-change"></span> (<span id="instagram-followers-change-label"></span>)</p>
         </div>
       </div>
+      <p><em>Total social media followers: <strong id="total-followers"></strong></em></p>
       <h2>Engagement</h2>
       <div class="numbers">
         <div>
@@ -58,16 +63,22 @@
           <p class="change"><span id="twitter-mentions-change-arrow" class="arrow"></span> <span id="twitter-mentions-change"></span></p>
         </div>
         <div>
-          <h3 id="facebook-likes"></h3>
-          <p>Facebook likes (30 days)</p>
-          <p class="change"><span id="facebook-likes-change-arrow" class="arrow"></span> <span id="facebook-likes-change"></span></p>
+          <h3 id="facebook-views"></h3>
+          <p>Facebook page views (28 days)</p>
+          <p class="change"><span id="facebook-views-change-arrow" class="arrow"></span> <span id="facebook-views-change"></span></p>
+        </div>
+        <div>
+          <h3 id="facebook-engagements"></h3>
+          <p>Facebook engagements (28 days)</p>
+          <p class="change"><span id="facebook-engagements-change-arrow" class="arrow"></span> <span id="facebook-engagements-change"></span></p>
         </div>
         <div>
           <h3 id="medium-views"></h3>
           <p>Medium views (30 days)</p>
           <p class="change"><span id="medium-views-change-arrow" class="arrow"></span> <span id="medium-views-change"></span></p>
-        </div>
+        </div>        
       </div>
+      <p><em>Total impressions/views: <strong id="total-impressions"></strong></em></p>
       <h2>Medium</h2>
       <!--<canvas id="medium" width="400" height="400"></canvas>-->
       <div id="medium-chart" class="ct-chart"></div>
@@ -76,15 +87,31 @@
         <span class="colour2">&mdash;</span> Views
         <span class="colour3">&mdash;</span> Visitors
       </div>
-      <h2>Latest Developer Survey</h2>
-      <div id="survey-chart" class="ct-chart"></div>
-      <div class="key">
-        <span class="colour1">■</span> Aware of Samsung Internet
-        <span class="colour2">■</span> Not aware of Samsung Internet
+      <h2>Surveys</h2>
+      <div class="surveys">
+        <div class="survey">
+          <h3>Twitter poll</h3>          
+          <div id="twitter-survey-chart" class="ct-chart"></div>
+          <div class="key">
+            <span class="colour1">■</span> Aware of Samsung Internet
+            <span class="colour2">■</span> Not aware of Samsung Internet
+          </div>
+          <p><em>Source: <a href="https://twitter.com/poshaughnessy/status/846813031178874880">Peter's Twitter poll</a>, March 2017</em></p>
+        </div>
+        <div class="survey">
+          <h3>Events feedback</h3>          
+          <div id="event-survey-chart" class="ct-chart"></div>
+          <div class="key">
+            <span class="colour1">■</span> Aware of Samsung Internet
+            <span class="colour2">■</span> Not aware of Samsung Internet
+          </div>
+          <p><em>Source: <a href="https://docs.google.com/a/ada.is/spreadsheets/d/1SxnLKkhqOPZPCEYzX0S0WVPaNN6Hs5vFhOi4Py8bLHs/edit?usp=sharing">Event feedback surveys</a>, April to June 2017</em></p>
+        </div>
       </div>
     </main>
     <footer>
       <p>&copy; 2017 Samsung Internet</p>
     </footer>
+    <script src="src/index.js"></script>
   </body>
 </html>

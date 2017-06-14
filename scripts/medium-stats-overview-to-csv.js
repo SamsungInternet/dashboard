@@ -14,7 +14,7 @@ var viewsMaxAxis = 5000;
 var visitorsMaxAxis = 4000;
 
 // First date of the graph (US Format)
-var initialDay = new Date('05/14/2017')
+var initialDay = new Date('06/14/2017')
 
 // Days in the graphs
 var days = 30;
