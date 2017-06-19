@@ -205,8 +205,8 @@ function updateStatWithChange(groupName, dataId, data) {
 
     var linkEl = document.getElementById(`${groupName}-${dataId}-link`);
 
-    if (data.link && linkEl) {
-        linkEl.href = data.link;
+    if (data[dataId].link && linkEl) {
+        linkEl.href = data[dataId].link;
     }
 
 }
