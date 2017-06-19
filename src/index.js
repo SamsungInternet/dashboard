@@ -123,6 +123,21 @@ function parseStatsJSON() {
 
 }
 
+function parseGithubJSON() {
+
+    fetch(githubReposJSONPath)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            return updateGithubStats(data);
+        })
+        .catch(function(error) {
+            console.error('Error parsing Github JSON', error);
+        });
+
+}
+
 function updateStats(data) {
 
     if (data.updated) {
@@ -164,6 +179,26 @@ function updateStats(data) {
         data.medium.engagement.views.count);
 
     console.log('Updated stats from JSON data', data);
+
+}
+
+function updateGithubStats(data) {
+
+    var totalStars = 0;
+    var totalForks = 0;
+
+    for (var i=0; i < data.items.length; i++) {
+
+        var repo = data.items[i];
+
+        totalStars += repo['stargazers_count'];
+        totalForks += repo['forks'];
+
+    }
+
+    document.getElementById('github-repositories').innerHTML = data['total_count'];
+    document.getElementById('github-stars').innerHTML = totalStars;
+    document.getElementById('github-forks').innerHTML = totalForks;
 
 }
 
@@ -228,6 +263,7 @@ function setupServiceWorker() {
 }
 
 parseStatsJSON();
+parseGithubJSON();
 parseMediumCSV();
 setupSurveyCharts();
 setupServiceWorker();

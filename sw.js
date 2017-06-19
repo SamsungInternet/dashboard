@@ -11,7 +11,8 @@ var precacheList = [
   'images/icon512.png',
   'images/samsung-internet-logo-text.svg',
   mediumStatsCSVPath,
-  statsJSONPath
+  statsJSONPath,
+  githubReposJSONPath
 ];
 
 console.log('precacheList', precacheList);

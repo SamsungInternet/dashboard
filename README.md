@@ -15,13 +15,16 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 
 ### General stats
 
-* Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json` & update the filename in `src/data-paths.js`.
+* Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json`.
+* Download Github stats from [here](https://api.github.com/search/repositories?q=org%3Asamsunginternet), save in the data directory as e.g. `data/github-repos-2017-06-19.json`. 
 * To find Medium stats, see [here](https://medium.com/samsung-internet-dev/stats/overview) and the followers [here](https://medium.com/samsung-internet-dev/latest).
 * To find Twitter stats, see [here](https://analytics.twitter.com). (Ask Daniel for the login).
 * To find Facebook stats, check the 28 day like increase [here](https://www.facebook.com/samsunginternet/insights/) and look for 'follows' on the right-hand side [here](https://www.facebook.com/samsunginternet).
 * To find Instagram followers, see [here](https://www.instagram.com/samsunginternet/).
+* TO find Github stats, see [here](https://github.com/search?utf8=%E2%9C%93&q=org%3Asamsunginternet&ref=simplesearch)
 * To get the SEO rankings, you can use [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/).
 * To get the Twitter reach stats, you can use [tweetreach.com](https://tweetreach.com).
+* Update the filenames in `src/data-paths.js`.
 
 ### Medium graph
 
