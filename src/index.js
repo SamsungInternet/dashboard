@@ -1,6 +1,3 @@
-var mediumStatsCSVPath = 'data/medium-stats-overview-2017-06-14.csv';
-var statsJSONPath = 'data/stats-2017-06-14.json';
-
 var twitterSurveyAwarePercent = 37;
 var eventSurveyAwarePercent = 40;
 
