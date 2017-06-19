@@ -1,0 +1,122 @@
+{
+  "updated": "2017-06-19",
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 873,
+        "change": 98,
+        "change-label": "25 days"
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 27297,
+        "change": -19.7,
+        "change-label": "25 days"
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 837,
+        "change": 92
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 50900,
+        "change": -48.8
+      },
+      "mentions": {
+        "count": 186,
+        "change": -9.7
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 172,
+        "change": 23
+      },
+      "reach": {
+        "count": 2667,
+        "change": -56.0
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 21,
+        "change": -84.0
+      },
+      "views": {
+        "count": 95,
+        "change": -66.0
+      },
+      "engagements": {
+        "count": 326,
+        "change": -60.0
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 21,
+        "change": 7,
+        "change-label": "13 days"
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 38,
+      "change": -3,
+      "change-label": "5 days",
+      "link": "https://webvr.io/"
+    },
+    "webpayments": {
+      "count": 31,
+      "change": 5,
+      "change-label": "5 days",
+      "link": "https://medium.com/samsung-internet-dev/how-to-take-payments-on-the-web-with-the-payment-request-api-a523f6fc7c1f"
+    },
+    "pwas": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    },
+    "physicalweb": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    }
+  },
+  "twitterreach": {
+    "pwas": {
+      "count": 71440,
+      "change": -76.4,
+      "change-label": "5 days",
+      "link": "https://tweetreach.com/reports/19363243"
+    },
+    "webvr": {
+      "count": 472300,
+      "change": 101.4,
+      "change-label": "5 days",
+      "link": "https://tweetreach.com/reports/19363253"
+    },
+    "webpayments": {
+      "count": 793943,
+      "change": 104.6,
+      "change-label": "5 days",
+      "link": "https://tweetreach.com/reports/19363275"
+    },
+    "physicalweb": {
+      "count": 31419,
+      "change": -9.3,
+      "change-label": "5 days",
+      "link": "https://tweetreach.com/reports/19363301"
+    }
+  }
+}

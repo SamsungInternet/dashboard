@@ -15,7 +15,7 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 
 ### General stats
 
-* Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json` & update the filename in `index.js`.
+* Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json` & update the filename in `src/data-paths.js`.
 * To find Medium stats, see [here](https://medium.com/samsung-internet-dev/stats/overview) and the followers [here](https://medium.com/samsung-internet-dev/latest).
 * To find Twitter stats, see [here](https://analytics.twitter.com). (Ask Daniel for the login).
 * To find Facebook stats, check the 28 day like increase [here](https://www.facebook.com/samsunginternet/insights/) and look for 'follows' on the right-hand side [here](https://www.facebook.com/samsunginternet).
@@ -28,7 +28,7 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 * Visit [medium.com/samsung-internet-dev/stats/overview](https://medium.com/samsung-internet-dev/stats/overview)
 * Update `scripts/medium-stats-overview-to-csv.js` with the new `initialDay`.
 * Paste the content of `scripts/medium-stats-overview-to-csv.js` into the Chrome debug console.
-* Copy/move the downloaded CSV file to the `data` directory & update `src/index.js` with the new filename.
+* Copy/move the downloaded CSV file to the `data` directory & update `src/data-paths.js` with the new filename.
 
 ### Survey pie charts
 

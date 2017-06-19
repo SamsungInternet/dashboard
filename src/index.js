@@ -203,6 +203,12 @@ function updateStatWithChange(groupName, dataId, data) {
         arrowEl.classList.add('down');
     }
 
+    var linkEl = document.getElementById(`${groupName}-${dataId}-link`);
+
+    if (data.link && linkEl) {
+        linkEl.href = data.link;
+    }
+
 }
 
 function setupServiceWorker() {
