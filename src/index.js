@@ -1,5 +1,7 @@
+var GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
+
 var twitterSurveyAwarePercent = 37;
-var eventSurveyAwarePercent = 40;
+var eventSurveyAwarePercent = 41;
 
 var upArrow = '↑';
 var downArrow = '↓';
@@ -125,7 +127,7 @@ function parseStatsJSON() {
 
 function parseGithubJSON() {
 
-    fetch(githubReposJSONPath)
+    fetch(GITHUB_API_REPOS_URL)
         .then(function(response) {
             return response.json();
         })
@@ -161,7 +163,6 @@ function updateStats(data) {
     updateStatWithChange('twitterreach', 'pwas', data.twitterreach);
     updateStatWithChange('twitterreach', 'physicalweb', data.twitterreach);
 
-    // TODO also make 'Top Samsung entry ranking' dynamic
     updateStatWithChange('seo', 'webvr', data.seo);
     updateStatWithChange('seo', 'webpayments', data.seo);
     updateStatWithChange('seo', 'pwas', data.seo);
@@ -263,7 +264,7 @@ function setupServiceWorker() {
 }
 
 parseStatsJSON();
-parseGithubJSON();
 parseMediumCSV();
+parseGithubJSON();
 setupSurveyCharts();
 setupServiceWorker();

@@ -1,5 +1,7 @@
 'use strict';
 
+var version = 2;
+
 importScripts('lib/sw-toolbox.js');
 importScripts('src/data-paths.js');
 
@@ -11,8 +13,7 @@ var precacheList = [
   'images/icon512.png',
   'images/samsung-internet-logo-text.svg',
   mediumStatsCSVPath,
-  statsJSONPath,
-  githubReposJSONPath
+  statsJSONPath
 ];
 
 console.log('precacheList', precacheList);
@@ -24,3 +25,5 @@ toolbox.router.get('/images/*', toolbox.cacheFirst);
 toolbox.router.get('/*', toolbox.networkFirst, {
   networkTimeoutSeconds: 5
 });
+
+console.log('Service worker version', version);
