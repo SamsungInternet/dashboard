@@ -28,9 +28,9 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 
 ### Medium graph
 
-* Visit [medium.com/samsung-internet-dev/stats/overview](https://medium.com/samsung-internet-dev/stats/overview)
-* Update `scripts/medium-stats-overview-to-csv.js` with the new `initialDay`.
-* Paste the content of `scripts/medium-stats-overview-to-csv.js` into the Chrome debug console.
+* Install the Dashboard Updated Chrome extension from the `extension` subdirectory. [Here's how](https://developer.chrome.com/extensions/getstarted#unpacked).
+* Visit [medium.com/samsung-internet-dev/stats/overview](https://medium.com/samsung-internet-dev/stats/overview).
+* Click the 'Download Medium stats' button.
 * Copy/move the downloaded CSV file to the `data` directory & update `src/data-paths.js` with the new filename.
 
 ### Survey pie charts

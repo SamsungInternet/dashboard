@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Dashboard Updater",
+  "description": "Helps to update the data for our Samsung Internet developer advocacy dashboard",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Dashboard Updater"
+  },
+  "web_accessible_resources": ["page-script-medium.js"]
+}
