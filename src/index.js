@@ -158,10 +158,12 @@ function updateStats(data) {
     updateStatWithChange('facebook', 'engagements', data.facebook.engagement);
     updateStatWithChange('medium', 'views', data.medium.engagement);
 
+    /*
     updateStatWithChange('twitterreach', 'webvr', data.twitterreach);
     updateStatWithChange('twitterreach', 'webpayments', data.twitterreach);
     updateStatWithChange('twitterreach', 'pwas', data.twitterreach);
     updateStatWithChange('twitterreach', 'physicalweb', data.twitterreach);
+    */
 
     updateStatWithChange('seo', 'webvr', data.seo);
     updateStatWithChange('seo', 'webpayments', data.seo);
@@ -231,12 +233,12 @@ function updateStatWithChange(groupName, dataId, data) {
   
     var arrowEl = document.getElementById(`${groupName}-${dataId}-change-arrow`); 
 
-    if (data[dataId].change > -1) {
-        arrowEl.innerHTML = upArrow;
-        arrowEl.classList.add('up');
-    } else {
+    if (data[dataId].change < 0) {
         arrowEl.innerHTML = downArrow;
         arrowEl.classList.add('down');
+    } else {
+        arrowEl.innerHTML = upArrow;
+        arrowEl.classList.add('up');
     }
 
     var linkEl = document.getElementById(`${groupName}-${dataId}-link`);

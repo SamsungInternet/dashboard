@@ -1,0 +1,97 @@
+{
+  "updated": "2017-07-11",
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 1000,
+        "change": 138,
+        "change-label": "28 days"
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 37590,
+        "change": 29.5,
+        "change-label": "28 days"
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 889,
+        "change": 69
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 38500,
+        "change": -42.6
+      },
+      "mentions": {
+        "count": 200,
+        "change": 0
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 183,
+        "change": 4
+      },
+      "reach": {
+        "count": 50,
+        "change": -92.0
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 16,
+        "change": -78.0
+      },
+      "views": {
+        "count": 67,
+        "change": -64.0
+      },
+      "engagements": {
+        "count": 351,
+        "change": -10.0
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 30,
+        "change": 11,
+        "change-label": "28 days"
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 33,
+      "change": 2,
+      "change-label": "28 days",
+      "link": "https://webvr.io/"
+    },
+    "webpayments": {
+      "count": 38,
+      "change": -2,
+      "change-label": "28 days",
+      "link": "https://samsunginter.net/docs/web-payments"
+    },
+    "pwas": {
+      "count": "13",
+      "change": "N/A",
+      "change-label": "New",
+      "link": "https://medium.com/samsung-internet-dev/a-beginners-guide-to-making-progressive-web-apps-beb56224948e"
+    },
+    "physicalweb": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    }
+  }
+}
