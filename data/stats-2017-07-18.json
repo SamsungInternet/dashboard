@@ -1,0 +1,96 @@
+{
+  "updated": "2017-07-18",
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 1100,
+        "change": 200,
+        "change-label": "28 days"
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 40735,
+        "change": 49.2,
+        "change-label": "28 days"
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 904,
+        "change": 60
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 39700,
+        "change": -21.0
+      },
+      "mentions": {
+        "count": 170,
+        "change": -21.3
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 185,
+        "change": 13
+      },
+      "reach": {
+        "count": 898,
+        "change": -66.0
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 21,
+        "change": -5.0
+      },
+      "views": {
+        "count": 67,
+        "change": -64.0
+      },
+      "engagements": {
+        "count": 237,
+        "change": -28.0
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 31,
+        "change": 10,
+        "change-label": "28 days"
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 31,
+      "change": 7,
+      "change-label": "28 days",
+      "link": "https://webvr.io/"
+    },
+    "webpayments": {
+      "count": 28,
+      "change": 3,
+      "change-label": "28 days",
+      "link": "https://samsunginter.net/docs/web-payments"
+    },
+    "pwas": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    },
+    "physicalweb": {
+      "count": "N/A",
+      "change": "N/A",
+      "change-label": "N/A"
+    }
+  }
+}

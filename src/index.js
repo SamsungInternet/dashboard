@@ -1,7 +1,7 @@
 var GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
 
 var twitterSurveyAwarePercent = 37;
-var eventSurveyAwarePercent = 41;
+var eventSurveyAwarePercent = 42;
 
 var upArrow = '↑';
 var downArrow = '↓';
@@ -13,9 +13,9 @@ function isInteger(number) {
     return typeof number === 'number' && number % 1 === 0;
 }
 
-// If tens of thousands or more, use format like 12.3K
-function formatCountNumber(number) {
-    return number >= 10000 ? (number/1000).toFixed(1) + 'K' : number;
+// If thousands or more, use format like 12.3K
+function formatNumberValue(number, forceThousandsFormat) {
+    return forceThousandsFormat || number >= 1000 ? (number/1000).toFixed(1) + 'K' : number;
 }
 
 function setupSurveyChart(chartId, awarePercent) {
@@ -170,13 +170,13 @@ function updateStats(data) {
     updateStatWithChange('seo', 'pwas', data.seo);
     updateStatWithChange('seo', 'physicalweb', data.seo);
 
-    document.getElementById('total-followers').innerHTML = formatCountNumber(
+    document.getElementById('total-followers').innerHTML = formatNumberValue(
         data.medium.audience.followers.count +
         data.twitter.audience.followers.count + 
         data.facebook.audience.followers.count +
         data.instagram.audience.followers.count);
 
-    document.getElementById('total-impressions').innerHTML = formatCountNumber(
+    document.getElementById('total-impressions').innerHTML = formatNumberValue(
         data.twitter.engagement.impressions.count +
         data.facebook.engagement.views.count +
         data.medium.engagement.views.count);
@@ -205,25 +205,33 @@ function updateGithubStats(data) {
 
 }
 
+function formatChangeValue(data) {
+
+    var change = data.change;
+
+    if (change !== 'undefined') {
+
+        if (change === 'string') {
+            return change;
+        } else if (!isInteger(change)) {
+            // XXX For now, if value is a non-integer, we presume it's a percentage...
+            return change + '%';
+        } else if (data.count >= 1000) {
+            // If count is in the thousands, use same format for the change value
+            return formatNumberValue(change, true);
+        } else {
+            return change;
+        }
+    }
+
+    return '';
+}
+
 function updateStatWithChange(groupName, dataId, data) {
 
-    document.getElementById(`${groupName}-${dataId}`).innerHTML = formatCountNumber(data[dataId].count);
-
-    if (typeof data[dataId].change !== 'undefined') {
-
-        if (typeof data[dataId].change === 'string') {
-
-            document.getElementById(`${groupName}-${dataId}-change`).innerHTML = data[dataId].change;
-
-        } else {
-
-            // We presume change value is a percentage if number is non-integer (that's the format we should follow)
-            document.getElementById(`${groupName}-${dataId}-change`).innerHTML = data[dataId].change + 
-                (isInteger(data[dataId].change) ? '' : '%');
-
-        }
-    
-    }
+    document.getElementById(`${groupName}-${dataId}`).innerHTML = formatNumberValue(data[dataId].count);
+    document.getElementById(`${groupName}-${dataId}-change`).innerHTML = formatChangeValue(data[dataId]);
+   
 
     var changeLabelEl = document.getElementById(`${groupName}-${dataId}-change-label`);
 
