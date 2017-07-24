@@ -8,6 +8,8 @@ var downArrow = '↓';
 
 var labelCount = 0;
 
+var compareWithDaysDiff = 0;
+
 
 function isInteger(number) {
     return typeof number === 'number' && number % 1 === 0;
@@ -16,6 +18,10 @@ function isInteger(number) {
 // If thousands or more, use format like 12.3K
 function formatNumberValue(number, forceThousandsFormat) {
     return forceThousandsFormat || number >= 1000 ? (number/1000).toFixed(1) + 'K' : number;
+}
+
+function getDaysDiff(dateString1, dateString2) {
+    return moment(dateString1).diff(moment(dateString2), 'days');
 }
 
 function setupSurveyChart(chartId, awarePercent) {
@@ -117,7 +123,13 @@ function parseStatsJSON() {
             return response.json();
         })
         .then(function(data) {
-            return updateStats(data);
+            fetch(compareWithStatsJSONPath)
+                .then(function(compareWithResponse) {
+                    return compareWithResponse.json();
+                })
+                .then(function(compareWithData) {
+                    return updateStats(data, compareWithData);
+                });
         })
         .catch(function(error) {
             console.error('Error parsing stats JSON', error);
@@ -140,35 +152,29 @@ function parseGithubJSON() {
 
 }
 
-function updateStats(data) {
+function updateStats(data, compareWithData) {
 
     if (data.updated) {
         document.getElementById('last-updated').innerHTML = moment(data.updated).format('DD MMMM YYYY');
+        compareWithDaysDiff = getDaysDiff(data.updated, compareWithData.updated);
     }
 
-    updateStatWithChange('medium', 'followers', data.medium.audience);
-    updateStatWithChange('twitter', 'followers', data.twitter.audience);
-    updateStatWithChange('facebook', 'followers', data.facebook.audience);
-    updateStatWithChange('facebook', 'reach', data.facebook.audience);
-    updateStatWithChange('instagram', 'followers', data.instagram.audience);
+    updateStatWithChange('medium', 'followers', data.medium.audience, compareWithData.medium.audience);
+    updateStatWithChange('twitter', 'followers', data.twitter.audience, compareWithData.twitter.audience);
+    updateStatWithChange('facebook', 'followers', data.facebook.audience, compareWithData.facebook.audience);
+    updateStatWithChange('facebook', 'reach', data.facebook.audience, compareWithData.facebook.audience);
+    updateStatWithChange('instagram', 'followers', data.instagram.audience, compareWithData.instagram.audience);
 
-    updateStatWithChange('twitter', 'impressions', data.twitter.engagement);
-    updateStatWithChange('twitter', 'mentions', data.twitter.engagement);
-    updateStatWithChange('facebook', 'views', data.facebook.engagement);
-    updateStatWithChange('facebook', 'engagements', data.facebook.engagement);
-    updateStatWithChange('medium', 'views', data.medium.engagement);
+    updateStatWithChange('twitter', 'impressions', data.twitter.engagement, compareWithData.twitter.engagement);
+    updateStatWithChange('twitter', 'mentions', data.twitter.engagement, compareWithData.twitter.engagement);
+    updateStatWithChange('facebook', 'views', data.facebook.engagement, compareWithData.facebook.engagement);
+    updateStatWithChange('facebook', 'engagements', data.facebook.engagement, compareWithData.facebook.engagement);
+    updateStatWithChange('medium', 'views', data.medium.engagement, compareWithData.medium.engagement);
 
-    /*
-    updateStatWithChange('twitterreach', 'webvr', data.twitterreach);
-    updateStatWithChange('twitterreach', 'webpayments', data.twitterreach);
-    updateStatWithChange('twitterreach', 'pwas', data.twitterreach);
-    updateStatWithChange('twitterreach', 'physicalweb', data.twitterreach);
-    */
-
-    updateStatWithChange('seo', 'webvr', data.seo);
-    updateStatWithChange('seo', 'webpayments', data.seo);
-    updateStatWithChange('seo', 'pwas', data.seo);
-    updateStatWithChange('seo', 'physicalweb', data.seo);
+    updateStatWithChange('seo', 'webvr', data.seo, compareWithData.seo, true);
+    updateStatWithChange('seo', 'webpayments', data.seo, compareWithData.seo, true);
+    updateStatWithChange('seo', 'pwas', data.seo, compareWithData.seo, true);
+    updateStatWithChange('seo', 'physicalweb', data.seo, compareWithData.seo, true);
 
     document.getElementById('total-followers').innerHTML = formatNumberValue(
         data.medium.audience.followers.count +
@@ -205,48 +211,54 @@ function updateGithubStats(data) {
 
 }
 
-function formatChangeValue(data) {
+function formatChangeValue(count, compareWithCount, lowerIsBetter) {
 
-    var change = data.change;
-
-    if (change !== 'undefined') {
-
-        if (change === 'string') {
-            return change;
-        } else if (!isInteger(change)) {
-            // XXX For now, if value is a non-integer, we presume it's a percentage...
-            return change + '%';
-        } else if (data.count >= 1000) {
-            // If count is in the thousands, use same format for the change value
-            return formatNumberValue(change, true);
-        } else {
-            return change;
-        }
+    if (typeof count === 'undefined' || typeof compareWithCount === 'undefined') {
+        return 'N/A';
     }
 
-    return '';
+    if (count === 'N/A' || compareWithCount === 'N/A') {
+        return 'N/A';
+    }
+
+    // Use percentage change values for larger numbers
+    if (count > 10000 || compareWithCount > 10000) {
+        return ((count - compareWithCount) / compareWithCount * 100).toFixed(1) + '%';
+    }
+
+    return lowerIsBetter ? compareWithCount - count : count - compareWithCount;
+
 }
 
-function updateStatWithChange(groupName, dataId, data) {
+function updateStatWithChange(groupName, dataId, data, compareWithData, lowerIsBetter) {
 
     document.getElementById(`${groupName}-${dataId}`).innerHTML = formatNumberValue(data[dataId].count);
-    document.getElementById(`${groupName}-${dataId}-change`).innerHTML = formatChangeValue(data[dataId]);
-   
+    document.getElementById(`${groupName}-${dataId}-change`).innerHTML = formatChangeValue(data[dataId].count, compareWithData[dataId].count, lowerIsBetter);
 
     var changeLabelEl = document.getElementById(`${groupName}-${dataId}-change-label`);
 
-    if (changeLabelEl && data[dataId]['change-label']) {
-        changeLabelEl.innerHTML = data[dataId]['change-label'];
-    } 
-  
+    if (changeLabelEl) {
+        changeLabelEl.innerHTML = compareWithDaysDiff + ' days';
+    }
+ 
     var arrowEl = document.getElementById(`${groupName}-${dataId}-change-arrow`); 
 
-    if (data[dataId].change < 0) {
-        arrowEl.innerHTML = downArrow;
-        arrowEl.classList.add('down');
+    if (data[dataId].count - compareWithData[dataId].count < 0) {
+        if (lowerIsBetter) {
+            arrowEl.innerHTML = upArrow;
+            arrowEl.classList.add('up');
+        } else {
+            arrowEl.innerHTML = downArrow;
+            arrowEl.classList.add('down');
+        }
     } else {
-        arrowEl.innerHTML = upArrow;
-        arrowEl.classList.add('up');
+        if (lowerIsBetter) {
+            arrowEl.innerHTML = downArrow;
+            arrowEl.classList.add('down');
+        } else {
+            arrowEl.innerHTML = upArrow;
+            arrowEl.classList.add('up');
+        }
     }
 
     var linkEl = document.getElementById(`${groupName}-${dataId}-link`);
