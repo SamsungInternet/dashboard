@@ -222,11 +222,11 @@ function formatChangeValue(count, compareWithCount, lowerIsBetter) {
     }
 
     // Use percentage change values for larger numbers
-    if (count > 10000 || compareWithCount > 10000) {
+    if (count > 1000 || compareWithCount > 1000) {
         return ((count - compareWithCount) / compareWithCount * 100).toFixed(1) + '%';
     }
 
-    return lowerIsBetter ? compareWithCount - count : count - compareWithCount;
+    return formatNumberValue(lowerIsBetter ? compareWithCount - count : count - compareWithCount);
 
 }
 
