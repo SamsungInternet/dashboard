@@ -1,0 +1,75 @@
+{
+  "updated": "2017-08-01",
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 1200
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 46312
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 967
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 71400
+      },
+      "mentions": {
+        "count": 148
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 204
+      },
+      "reach": {
+        "count": 788
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 27
+      },
+      "views": {
+        "count": 53
+      },
+      "engagements": {
+        "count": 158
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 33
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 63,
+      "link": "https://webvr.io/showcase/"
+    },
+    "webpayments": {
+      "count": 22,
+      "link": "https://medium.com/samsung-internet-dev/how-to-take-payments-on-the-web-with-the-payment-request-api-a523f6fc7c1f"
+    },
+    "pwas": {
+      "count": 20,
+      "link": "https://medium.com/samsung-internet-dev/a-beginners-guide-to-making-progressive-web-apps-beb56224948e"
+    },
+    "physicalweb": {
+      "count": "N/A"
+    }
+  }
+}
