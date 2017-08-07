@@ -159,22 +159,23 @@ function updateStats(data, compareWithData) {
         compareWithDaysDiff = getDaysDiff(data.updated, compareWithData.updated);
     }
 
-    updateStatWithChange('medium', 'followers', data.medium.audience, compareWithData.medium.audience);
-    updateStatWithChange('twitter', 'followers', data.twitter.audience, compareWithData.twitter.audience);
-    updateStatWithChange('facebook', 'followers', data.facebook.audience, compareWithData.facebook.audience);
-    updateStatWithChange('facebook', 'reach', data.facebook.audience, compareWithData.facebook.audience);
-    updateStatWithChange('instagram', 'followers', data.instagram.audience, compareWithData.instagram.audience);
+    updateStatWithChange(data, compareWithData, ['devhub', 'audience', 'uniquevisitors']);
+    updateStatWithChange(data, compareWithData, ['medium', 'audience', 'followers']);
+    updateStatWithChange(data, compareWithData, ['twitter', 'audience', 'followers']);
+    updateStatWithChange(data, compareWithData, ['facebook', 'audience', 'followers']);
+    updateStatWithChange(data, compareWithData, ['facebook', 'audience', 'reach']);
+    updateStatWithChange(data, compareWithData, ['instagram', 'audience', 'followers']);
 
-    updateStatWithChange('twitter', 'impressions', data.twitter.engagement, compareWithData.twitter.engagement);
-    updateStatWithChange('twitter', 'mentions', data.twitter.engagement, compareWithData.twitter.engagement);
-    updateStatWithChange('facebook', 'views', data.facebook.engagement, compareWithData.facebook.engagement);
-    updateStatWithChange('facebook', 'engagements', data.facebook.engagement, compareWithData.facebook.engagement);
-    updateStatWithChange('medium', 'views', data.medium.engagement, compareWithData.medium.engagement);
+    updateStatWithChange(data, compareWithData, ['twitter', 'engagement', 'impressions']);
+    updateStatWithChange(data, compareWithData, ['twitter', 'engagement', 'mentions']);
+    updateStatWithChange(data, compareWithData, ['facebook', 'engagement', 'views']);
+    updateStatWithChange(data, compareWithData, ['facebook', 'engagement', 'engagements']);
+    updateStatWithChange(data, compareWithData, ['medium', 'engagement', 'views']);
 
-    updateStatWithChange('seo', 'webvr', data.seo, compareWithData.seo, true);
-    updateStatWithChange('seo', 'webpayments', data.seo, compareWithData.seo, true);
-    updateStatWithChange('seo', 'pwas', data.seo, compareWithData.seo, true);
-    updateStatWithChange('seo', 'physicalweb', data.seo, compareWithData.seo, true);
+    updateStatWithChange(data, compareWithData, ['seo', 'webvr'], true);
+    updateStatWithChange(data, compareWithData, ['seo', 'webpayments'], true);
+    updateStatWithChange(data, compareWithData, ['seo', 'pwas'], true);
+    updateStatWithChange(data, compareWithData, ['seo', 'physicalweb'], true);
 
     document.getElementById('total-followers').innerHTML = formatNumberValue(
         data.medium.audience.followers.count +
@@ -230,10 +231,34 @@ function formatChangeValue(count, compareWithCount, lowerIsBetter) {
 
 }
 
-function updateStatWithChange(groupName, dataId, data, compareWithData, lowerIsBetter) {
+function updateStatWithChange(data, compareWithData, dataAttributes, lowerIsBetter) {
 
-    document.getElementById(`${groupName}-${dataId}`).innerHTML = formatNumberValue(data[dataId].count);
-    document.getElementById(`${groupName}-${dataId}-change`).innerHTML = formatChangeValue(data[dataId].count, compareWithData[dataId].count, lowerIsBetter);
+    var currentNested = data,
+        compareWithNested = compareWithData;
+
+    // Traverse down dataAttributes to get to the specific data point, if it exists
+    for (var i=0; i < dataAttributes.length; i++) {
+        
+        var dataAttribute = dataAttributes[i];
+
+        if (currentNested[dataAttribute]) {
+            currentNested = currentNested[dataAttribute];
+        }
+        
+        if (compareWithNested[dataAttribute]) {
+            compareWithNested = compareWithNested[dataAttribute];        
+        }
+
+    }
+
+    var groupName = dataAttributes[0],
+        dataId = dataAttributes[dataAttributes.length - 1],
+        count = currentNested.count,
+        compareWithCount = compareWithNested.count,
+        link = currentNested.link;
+
+    document.getElementById(`${groupName}-${dataId}`).innerHTML = formatNumberValue(count);
+    document.getElementById(`${groupName}-${dataId}-change`).innerHTML = formatChangeValue(count, compareWithCount, lowerIsBetter);
 
     var changeLabelEl = document.getElementById(`${groupName}-${dataId}-change-label`);
 
@@ -243,7 +268,7 @@ function updateStatWithChange(groupName, dataId, data, compareWithData, lowerIsB
  
     var arrowEl = document.getElementById(`${groupName}-${dataId}-change-arrow`); 
 
-    if (data[dataId].count - compareWithData[dataId].count < 0) {
+    if (count - compareWithCount < 0) {
         if (lowerIsBetter) {
             arrowEl.innerHTML = upArrow;
             arrowEl.classList.add('up');
@@ -263,8 +288,8 @@ function updateStatWithChange(groupName, dataId, data, compareWithData, lowerIsB
 
     var linkEl = document.getElementById(`${groupName}-${dataId}-link`);
 
-    if (data[dataId].link && linkEl) {
-        linkEl.href = data[dataId].link;
+    if (link && linkEl) {
+        linkEl.href = link;
     }
 
 }
