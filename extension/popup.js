@@ -1,5 +1,6 @@
-var MEDIUM_URL = 'https://medium.com/samsung-internet-dev/stats/overview';
-var btnMedium;
+var MEDIUM_OVERVIEW_URL = 'https://medium.com/samsung-internet-dev/stats/overview';
+var MEDIUM_STORIES_URL = 'https://medium.com/samsung-internet-dev/stats/stories';
+var btnMediumOverview;
 
 // Based on popup sample, copyright (c) 2014 The Chromium Authors
 function getCurrentTabUrl(callback) {
@@ -19,8 +20,11 @@ function getCurrentTabUrl(callback) {
 function updateEnabledButtons() {
 
   getCurrentTabUrl(function(url) {
-    if (btnMedium) {
-      btnMedium.disabled = (url !== MEDIUM_URL);
+    if (btnMediumOverview) {
+      btnMediumOverview.disabled = (url !== MEDIUM_OVERVIEW_URL);
+    }
+    if (btnMediumStories) {
+      btnMediumStories.disabled = (url !== MEDIUM_STORIES_URL);
     }
   });
 
@@ -30,17 +34,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateEnabledButtons();
 
-  btnMedium = document.getElementById('btn-medium');
+  btnMediumOverview = document.getElementById('btn-medium-overview');
+  btnMediumStories = document.getElementById('btn-medium-stories');
 
-  btnMedium.addEventListener('click', function() {
+  btnMediumOverview.addEventListener('click', function() {
 
     getCurrentTabUrl(function(url) {
-      if (url === MEDIUM_URL) {
+      if (url === MEDIUM_OVERVIEW_URL) {
         
-        console.log('Medium page - download Medium stats...');
+        console.log('Medium Overview');
 
         chrome.tabs.executeScript({
-          file: 'content-script-medium.js',
+          file: 'content-script-medium-overview.js',
+          runAt: 'document_end'
+        });
+      }
+    });
+  });
+
+  btnMediumStories.addEventListener('click', function() {
+
+    getCurrentTabUrl(function(url) {
+      if (url === MEDIUM_STORIES_URL) {
+        
+        console.log('Medium Stories');
+
+        chrome.tabs.executeScript({
+          file: 'content-script-medium-stories.js',
           runAt: 'document_end'
         });
       }
