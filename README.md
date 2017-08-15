@@ -18,12 +18,12 @@ to the [Dashboard Updater browser extension](extension/README.md).
 
 ### General stats
 
-* Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json`.
-* To find Medium stats, see [here](https://medium.com/samsung-internet-dev/stats/overview) and the followers [here](https://medium.com/samsung-internet-dev/latest).
-* To find Twitter stats, see [here](https://analytics.twitter.com). (Ask Daniel for the login).
-* To find Facebook stats, check the 28 day like increase [here](https://www.facebook.com/samsunginternet/insights/) and look for 'follows' on the right-hand side [here](https://www.facebook.com/samsunginternet).
-* To find Instagram followers, see [here](https://www.instagram.com/samsunginternet/).
-* To get the SEO rankings, you can use [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/).
+* Add a new stats JSON file with today's date, e.g. `data/stats-2017-06-14.json`, and update with the latest data:
+  * To find Medium stats, see [here](https://medium.com/samsung-internet-dev/stats/overview) and the followers [here](https://medium.com/samsung-internet-dev/latest).
+  * To find Twitter stats, see [here](https://analytics.twitter.com). (Ask Daniel for the login).
+  * To find Facebook stats, check the 28 day like increase [here](https://www.facebook.com/samsunginternet/insights/) and look for 'follows' on the right-hand side [here](https://www.facebook.com/samsunginternet).
+  * To find Instagram followers, see [here](https://www.instagram.com/samsunginternet/).
+  * To get the SEO rankings, you can use [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/).
 * Update the filenames in `src/data-paths.js`.
 
 ### Medium graph
