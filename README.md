@@ -9,7 +9,8 @@ trends for web technologies such as PWAs and WebVR.
 
 We intend to update it each week. Unfortunately for now, it will involve a few minutes of manual work. 
 Our social media platforms do not currently provide analytics data via APIs. However, hopefully over time 
-we can automate it more, either using APIs if/when provided or via scraping or a browser extension.
+we can automate it more, either using APIs if/when provided, automated scraping, or (at least) additions 
+to the [Dashboard Updater browser extension](extension/README.md).
 
 (For the Samsung Internet team) here are the current instructions:
 
@@ -20,14 +21,12 @@ we can automate it more, either using APIs if/when provided or via scraping or a
 * To find Twitter stats, see [here](https://analytics.twitter.com). (Ask Daniel for the login).
 * To find Facebook stats, check the 28 day like increase [here](https://www.facebook.com/samsunginternet/insights/) and look for 'follows' on the right-hand side [here](https://www.facebook.com/samsunginternet).
 * To find Instagram followers, see [here](https://www.instagram.com/samsunginternet/).
-* TO find Github stats, see [here](https://github.com/search?utf8=%E2%9C%93&q=org%3Asamsunginternet&ref=simplesearch)
 * To get the SEO rankings, you can use [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/).
-* To get the Twitter reach stats, you can use [tweetreach.com](https://tweetreach.com).
 * Update the filenames in `src/data-paths.js`.
 
 ### Medium graph
 
-* Install the Dashboard Updated Chrome extension from the `extension` subdirectory. [Here's how](https://developer.chrome.com/extensions/getstarted#unpacked).
+* Install the Dashboard Updater Chrome extension from the `extension` subdirectory. [Here's how](https://developer.chrome.com/extensions/getstarted#unpacked).
 * Visit [medium.com/samsung-internet-dev/stats/overview](https://medium.com/samsung-internet-dev/stats/overview).
 * Click the 'Download Medium stats' button.
 * Copy/move the downloaded CSV file to the `data` directory & update `src/data-paths.js` with the new filename.
