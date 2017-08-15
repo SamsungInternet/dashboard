@@ -1,6 +1,6 @@
 # Samsung Internet Developer Advocacy Dashboard
 
-![A preview of part of the dashboard](images/dashboard-preview-crop.png)
+[![A preview of part of the dashboard](images/dashboard-preview-crop.png)](https://samsunginter.net/dashboard)
 
 ## What is this?
 
