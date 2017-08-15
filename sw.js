@@ -1,6 +1,6 @@
 'use strict';
 
-var version = 8;
+var version = 9;
 
 importScripts('lib/sw-toolbox.js');
 importScripts('src/data-paths.js');
@@ -14,7 +14,7 @@ var precacheList = [
   'images/samsung-internet-logo-text.svg',
   mediumStatsCSVPath,
   statsJSONPath,
-  compareWithStatsJSONPath
+  comparisonStatsJSONPath
 ];
 
 console.log('precacheList', precacheList);

@@ -8,21 +8,8 @@ var downArrow = '↓';
 
 var labelCount = 0;
 
-var compareWithDaysDiff = 0;
+var comparisonDaysDiff = 0;
 
-
-function isInteger(number) {
-    return typeof number === 'number' && number % 1 === 0;
-}
-
-// If thousands or more, use format like 12.3K
-function formatNumberValue(number, forceThousandsFormat) {
-    return forceThousandsFormat || number >= 1000 ? (number/1000).toFixed(1) + 'K' : number;
-}
-
-function getDaysDiff(dateString1, dateString2) {
-    return moment(dateString1).diff(moment(dateString2), 'days');
-}
 
 function setupSurveyChart(chartId, awarePercent) {
 
@@ -123,12 +110,12 @@ function parseStatsJSON() {
             return response.json();
         })
         .then(function(data) {
-            fetch(compareWithStatsJSONPath)
-                .then(function(compareWithResponse) {
-                    return compareWithResponse.json();
+            fetch(comparisonStatsJSONPath)
+                .then(function(comparisonResponse) {
+                    return comparisonResponse.json();
                 })
-                .then(function(compareWithData) {
-                    return updateStats(data, compareWithData);
+                .then(function(comparisonData) {
+                    return updateStats(data, comparisonData);
                 });
         })
         .catch(function(error) {
@@ -152,43 +139,25 @@ function parseGithubJSON() {
 
 }
 
-function updateStats(data, compareWithData) {
+function updateChangeArrow(arrowEl, count, comparisonCount, lowerIsBetter) {
 
-    if (data.updated) {
-        document.getElementById('last-updated').innerHTML = moment(data.updated).format('DD MMMM YYYY');
-        compareWithDaysDiff = getDaysDiff(data.updated, compareWithData.updated);
+    if (count - comparisonCount < 0) {
+        if (lowerIsBetter) {
+            arrowEl.innerHTML = upArrow;
+            arrowEl.classList.add('up');
+        } else {
+            arrowEl.innerHTML = downArrow;
+            arrowEl.classList.add('down');
+        }
+    } else {
+        if (lowerIsBetter) {
+            arrowEl.innerHTML = downArrow;
+            arrowEl.classList.add('down');
+        } else {
+            arrowEl.innerHTML = upArrow;
+            arrowEl.classList.add('up');
+        }
     }
-
-    updateStatWithChange(data, compareWithData, ['devhub', 'audience', 'uniquevisitors']);
-    updateStatWithChange(data, compareWithData, ['medium', 'audience', 'followers']);
-    updateStatWithChange(data, compareWithData, ['twitter', 'audience', 'followers']);
-    updateStatWithChange(data, compareWithData, ['facebook', 'audience', 'followers']);
-    updateStatWithChange(data, compareWithData, ['facebook', 'audience', 'reach']);
-    updateStatWithChange(data, compareWithData, ['instagram', 'audience', 'followers']);
-
-    updateStatWithChange(data, compareWithData, ['twitter', 'engagement', 'impressions']);
-    updateStatWithChange(data, compareWithData, ['twitter', 'engagement', 'mentions']);
-    updateStatWithChange(data, compareWithData, ['facebook', 'engagement', 'views']);
-    updateStatWithChange(data, compareWithData, ['facebook', 'engagement', 'engagements']);
-    updateStatWithChange(data, compareWithData, ['medium', 'engagement', 'views']);
-
-    updateStatWithChange(data, compareWithData, ['seo', 'webvr'], true);
-    updateStatWithChange(data, compareWithData, ['seo', 'webpayments'], true);
-    updateStatWithChange(data, compareWithData, ['seo', 'pwas'], true);
-    updateStatWithChange(data, compareWithData, ['seo', 'physicalweb'], true);
-
-    document.getElementById('total-followers').innerHTML = formatNumberValue(
-        data.medium.audience.followers.count +
-        data.twitter.audience.followers.count + 
-        data.facebook.audience.followers.count +
-        data.instagram.audience.followers.count);
-
-    document.getElementById('total-impressions').innerHTML = formatNumberValue(
-        data.twitter.engagement.impressions.count +
-        data.facebook.engagement.views.count +
-        data.medium.engagement.views.count);
-
-    console.log('Updated stats from JSON data', data);
 
 }
 
@@ -212,81 +181,31 @@ function updateGithubStats(data) {
 
 }
 
-function formatChangeValue(count, compareWithCount, lowerIsBetter) {
+function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
 
-    if (typeof count === 'undefined' || typeof compareWithCount === 'undefined') {
-        return 'N/A';
-    }
+    var statAndComparison = getStatWithComparison(data, comparisonData, pathToStat),  
+        stat = statAndComparison[0],
+        comparisonStat = statAndComparison[1],
+        groupName = pathToStat[0],
+        statId = pathToStat[pathToStat.length - 1],
+        count = stat.count,
+        comparisonCount = comparisonStat.count,
+        link = stat.link;
 
-    if (count === 'N/A' || compareWithCount === 'N/A') {
-        return 'N/A';
-    }
+    document.getElementById(`${groupName}-${statId}`).innerHTML = formatNumberValue(count);
+    document.getElementById(`${groupName}-${statId}-change`).innerHTML = formatChangeValue(count, comparisonCount, lowerIsBetter);
 
-    // Use percentage change values for larger numbers
-    if (count > 1000 || compareWithCount > 1000) {
-        return ((count - compareWithCount) / compareWithCount * 100).toFixed(1) + '%';
-    }
-
-    return formatNumberValue(lowerIsBetter ? compareWithCount - count : count - compareWithCount);
-
-}
-
-function updateStatWithChange(data, compareWithData, dataAttributes, lowerIsBetter) {
-
-    var currentNested = data,
-        compareWithNested = compareWithData;
-
-    // Traverse down dataAttributes to get to the specific data point, if it exists
-    for (var i=0; i < dataAttributes.length; i++) {
-        
-        var dataAttribute = dataAttributes[i];
-
-        if (currentNested[dataAttribute]) {
-            currentNested = currentNested[dataAttribute];
-        }
-        
-        if (compareWithNested[dataAttribute]) {
-            compareWithNested = compareWithNested[dataAttribute];        
-        }
-
-    }
-
-    var groupName = dataAttributes[0],
-        dataId = dataAttributes[dataAttributes.length - 1],
-        count = currentNested.count,
-        compareWithCount = compareWithNested.count,
-        link = currentNested.link;
-
-    document.getElementById(`${groupName}-${dataId}`).innerHTML = formatNumberValue(count);
-    document.getElementById(`${groupName}-${dataId}-change`).innerHTML = formatChangeValue(count, compareWithCount, lowerIsBetter);
-
-    var changeLabelEl = document.getElementById(`${groupName}-${dataId}-change-label`);
+    var changeLabelEl = document.getElementById(`${groupName}-${statId}-change-label`);
 
     if (changeLabelEl) {
-        changeLabelEl.innerHTML = compareWithDaysDiff + ' days';
+        changeLabelEl.innerHTML = comparisonDaysDiff + ' days';
     }
  
-    var arrowEl = document.getElementById(`${groupName}-${dataId}-change-arrow`); 
+    var arrowEl = document.getElementById(`${groupName}-${statId}-change-arrow`); 
 
-    if (count - compareWithCount < 0) {
-        if (lowerIsBetter) {
-            arrowEl.innerHTML = upArrow;
-            arrowEl.classList.add('up');
-        } else {
-            arrowEl.innerHTML = downArrow;
-            arrowEl.classList.add('down');
-        }
-    } else {
-        if (lowerIsBetter) {
-            arrowEl.innerHTML = downArrow;
-            arrowEl.classList.add('down');
-        } else {
-            arrowEl.innerHTML = upArrow;
-            arrowEl.classList.add('up');
-        }
-    }
-
-    var linkEl = document.getElementById(`${groupName}-${dataId}-link`);
+    updateChangeArrow(arrowEl, count, comparisonCount, lowerIsBetter);
+    
+    var linkEl = document.getElementById(`${groupName}-${statId}-link`);
 
     if (link && linkEl) {
         linkEl.href = link;
@@ -294,20 +213,44 @@ function updateStatWithChange(data, compareWithData, dataAttributes, lowerIsBett
 
 }
 
-function setupServiceWorker() {
-    if ('serviceWorker' in navigator) {
+function updateStats(data, comparisonData) {
 
-    navigator.serviceWorker.register('/sw.js')
-      .then(function() {
-        console.log('Service worker successfully registered');
-      })
-      .catch(function(err) {
-        console.error('Service worker failed to register', err);
-      });
+    if (data.updated) {
+        document.getElementById('last-updated').innerHTML = moment(data.updated).format('DD MMMM YYYY');
+        comparisonDaysDiff = getDaysDiff(data.updated, comparisonData.updated);
+    }
 
-  } else {
-    console.log('Service workers not supported');
-  }
+    updateStatWithChange(data, comparisonData, ['devhub', 'audience', 'uniquevisitors']);
+    updateStatWithChange(data, comparisonData, ['medium', 'audience', 'followers']);
+    updateStatWithChange(data, comparisonData, ['twitter', 'audience', 'followers']);
+    updateStatWithChange(data, comparisonData, ['facebook', 'audience', 'followers']);
+    updateStatWithChange(data, comparisonData, ['facebook', 'audience', 'reach']);
+    updateStatWithChange(data, comparisonData, ['instagram', 'audience', 'followers']);
+
+    updateStatWithChange(data, comparisonData, ['twitter', 'engagement', 'impressions']);
+    updateStatWithChange(data, comparisonData, ['twitter', 'engagement', 'mentions']);
+    updateStatWithChange(data, comparisonData, ['facebook', 'engagement', 'views']);
+    updateStatWithChange(data, comparisonData, ['facebook', 'engagement', 'engagements']);
+    updateStatWithChange(data, comparisonData, ['medium', 'engagement', 'views']);
+
+    updateStatWithChange(data, comparisonData, ['seo', 'webvr'], true);
+    updateStatWithChange(data, comparisonData, ['seo', 'webpayments'], true);
+    updateStatWithChange(data, comparisonData, ['seo', 'pwas'], true);
+    updateStatWithChange(data, comparisonData, ['seo', 'physicalweb'], true);
+
+    document.getElementById('total-followers').innerHTML = formatNumberValue(
+        data.medium.audience.followers.count +
+        data.twitter.audience.followers.count + 
+        data.facebook.audience.followers.count +
+        data.instagram.audience.followers.count);
+
+    document.getElementById('total-impressions').innerHTML = formatNumberValue(
+        data.twitter.engagement.impressions.count +
+        data.facebook.engagement.views.count +
+        data.medium.engagement.views.count);
+
+    console.log('Updated stats from JSON data', data);
+
 }
 
 parseStatsJSON();
