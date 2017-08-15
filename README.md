@@ -1,5 +1,7 @@
 # Samsung Internet Developer Advocacy Dashboard
 
+![A preview of part of the dashboard](images/dashboard-preview-crop.png)
+
 ## What is this?
 
 It's a dashboard showing metrics for our Samsung Internet developer advocacy work, as well as 
