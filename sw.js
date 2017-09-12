@@ -1,6 +1,6 @@
 'use strict';
 
-var version = 10;
+var version = 11;
 
 importScripts('lib/sw-toolbox.js');
 importScripts('src/data-paths.js');
