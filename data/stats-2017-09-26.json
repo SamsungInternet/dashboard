@@ -1,0 +1,81 @@
+{
+  "updated": "2017-09-26",
+  "devhub": {
+    "audience": {
+      "uniquevisitors": {
+        "count": 11603
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 1700
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 16271
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1085
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 41300
+      },
+      "mentions": {
+        "count": 212
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 234
+      },
+      "reach": {
+        "count": 527
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 16
+      },
+      "views": {
+        "count": 41
+      },
+      "engagements": {
+        "count": 137
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 36
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 14,
+      "link": "https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c"
+    },
+    "webpayments": {
+      "count": 27,
+      "link": "https://samsunginter.net/docs/web-payments"
+    },
+    "pwas": {
+      "count": "N/A"
+    },
+    "physicalweb": {
+      "count": "N/A"
+    }
+  }
+}
