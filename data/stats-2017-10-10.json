@@ -1,0 +1,80 @@
+{
+  "updated": "2017-10-10",
+  "devhub": {
+    "audience": {
+      "uniquevisitors": {
+        "count": 16167
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 1800
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 14349
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1115
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 63700
+      },
+      "mentions": {
+        "count": 253
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 243
+      },
+      "reach": {
+        "count": 17277
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 22
+      },
+      "views": {
+        "count": 61
+      },
+      "engagements": {
+        "count": 225
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 39
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": "N/A"
+    },
+    "webpayments": {
+      "count": 27,
+      "link": "https://samsunginter.net/docs/web-payments"
+    },
+    "pwas": {
+      "count": "N/A"
+    },
+    "physicalweb": {
+      "count": "N/A"
+    }
+  }
+}
