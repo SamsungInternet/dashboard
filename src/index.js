@@ -183,7 +183,7 @@ function updateGithubStats(data) {
 
 function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
 
-    var statAndComparison = getStatWithComparison(data, comparisonData, pathToStat),  
+    var statAndComparison = getStatWithComparison(data, comparisonData, pathToStat),
         stat = statAndComparison[0],
         comparisonStat = statAndComparison[1],
         groupName = pathToStat[0],
@@ -200,15 +200,16 @@ function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
     if (changeLabelEl) {
         changeLabelEl.innerHTML = comparisonDaysDiff + ' days';
     }
- 
-    var arrowEl = document.getElementById(`${groupName}-${statId}-change-arrow`); 
+
+    var arrowEl = document.getElementById(`${groupName}-${statId}-change-arrow`);
 
     updateChangeArrow(arrowEl, count, comparisonCount, lowerIsBetter);
-    
-    var linkEl = document.getElementById(`${groupName}-${statId}-link`);
 
-    if (link && linkEl) {
-        linkEl.href = link;
+    var linkContainerEl = document.getElementById(`${groupName}-${statId}-link`);
+
+    if (link && linkContainerEl) {
+        var formattedLink = formatDisplayUrl(link);
+        linkContainerEl.innerHTML = `Top result:<br><a href="${link}">${formattedLink}</a>`;
     }
 
 }
@@ -240,7 +241,7 @@ function updateStats(data, comparisonData) {
 
     document.getElementById('total-followers').innerHTML = formatNumberValue(
         data.medium.audience.followers.count +
-        data.twitter.audience.followers.count + 
+        data.twitter.audience.followers.count +
         data.facebook.audience.followers.count +
         data.instagram.audience.followers.count);
 

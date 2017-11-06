@@ -1,0 +1,83 @@
+{
+  "updated": "2017-11-06",
+  "devhub": {
+    "audience": {
+      "uniquevisitors": {
+        "count": 123245
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 2000
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 46345
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1198
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 85600
+      },
+      "mentions": {
+        "count": 318
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 267
+      },
+      "reach": {
+        "count": 6976
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 27
+      },
+      "views": {
+        "count": 121
+      },
+      "engagements": {
+        "count": 394
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 45
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 55,
+      "link": "https://samsunginter.net/docs/webvr"
+    },
+    "webpayments": {
+      "count": 12,
+      "link": "https://samsunginter.net/docs/web-payments"
+    },
+    "pwas": {
+      "count": 12,
+      "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
+    },
+    "physicalweb": {
+      "count": 53,
+      "link": "https://samsunginter.net/docs/physical-web"
+    }
+  }
+}

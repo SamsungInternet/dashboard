@@ -1,3 +1,5 @@
+var MAX_DISPLAY_URL_LENGTH = 35;
+
 function isInteger(number) {
     return typeof number === 'number' && number % 1 === 0;
 }
@@ -30,6 +32,14 @@ function formatChangeValue(count, compareWithCount, lowerIsBetter) {
 
 }
 
+// Crop URL, add ellipsis, remove protocol
+function formatDisplayUrl(url) {
+    var formattedUrl = url.length > MAX_DISPLAY_URL_LENGTH ? (url.substring(0,MAX_DISPLAY_URL_LENGTH) + '...') : url;
+    formattedUrl = formattedUrl.replace('http://', '');
+    formattedUrl = formattedUrl.replace('https://', '');
+    return formattedUrl;
+}
+
 // Traverse down pathToStat to get to the specific data point, if it exists
 function getStatWithComparison(data, comparisonData, pathToStat) {
 
@@ -37,15 +47,15 @@ function getStatWithComparison(data, comparisonData, pathToStat) {
         comparisonStat = comparisonData;
 
     for (var i=0; i < pathToStat.length; i++) {
-        
+
         var attribute = pathToStat[i];
 
         if (stat[attribute]) {
             stat = stat[attribute];
         }
-        
+
         if (comparisonStat[attribute]) {
-            comparisonStat = comparisonStat[attribute];        
+            comparisonStat = comparisonStat[attribute];
         }
 
     }
