@@ -93,7 +93,7 @@
 
     var content = generateCSVContent(minutesReadValues, viewsValues, visitorsValues);
 
-    download(new Date().toISOString().slice(0, 10) + 'medium-overview.csv', content);
+    download(new Date().toISOString().slice(0, 10) + '-medium-overview.csv', content);
 
   }
 
