@@ -165,6 +165,7 @@ function updateGithubStats(data) {
 
     var totalStars = 0;
     var totalForks = 0;
+    var supportRepo;
 
     for (var i=0; i < data.items.length; i++) {
 
@@ -173,11 +174,17 @@ function updateGithubStats(data) {
         totalStars += repo['stargazers_count'];
         totalForks += repo['forks'];
 
+        if (repo.name === 'support') {
+            supportRepo = repo;
+        }
+
     }
 
     document.getElementById('github-repositories').innerHTML = data['total_count'];
     document.getElementById('github-stars').innerHTML = totalStars;
     document.getElementById('github-forks').innerHTML = totalForks;
+
+    document.getElementById('github-support-issues').innerHTML = supportRepo['open_issues_count'];
 
 }
 
