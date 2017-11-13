@@ -240,11 +240,13 @@ function updateStats(data, comparisonData) {
     updateStatWithChange(data, comparisonData, ['facebook', 'engagement', 'views']);
     updateStatWithChange(data, comparisonData, ['facebook', 'engagement', 'engagements']);
     updateStatWithChange(data, comparisonData, ['medium', 'engagement', 'views']);
+    updateStatWithChange(data, comparisonData, ['github', 'issues', 'close-time-avg']);
 
     updateStatWithChange(data, comparisonData, ['seo', 'webvr'], true);
     updateStatWithChange(data, comparisonData, ['seo', 'webpayments'], true);
     updateStatWithChange(data, comparisonData, ['seo', 'pwas'], true);
     updateStatWithChange(data, comparisonData, ['seo', 'physicalweb'], true);
+
 
     document.getElementById('total-followers').innerHTML = formatNumberValue(
         data.medium.audience.followers.count +

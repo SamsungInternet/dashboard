@@ -62,6 +62,13 @@
       }
     }
   },
+  "github": {
+    "issues": {
+      "close-time-avg": {
+        "count": 5
+      }
+    }
+  },
   "seo": {
     "webvr": {
       "count": 48,
