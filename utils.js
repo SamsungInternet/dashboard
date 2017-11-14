@@ -75,14 +75,16 @@ const utils = {
     },
 
     /**
-     * Return 'up' or 'down' string
+     * Return 'up', 'down' or blank string
      */
     getChangeDirection: function(count, comparisonCount, lowerIsBetter) {
 
         if (count - comparisonCount < 0) {
             return lowerIsBetter ? 'up' : 'down';
-        } else {
+        } else if (comparisonCount - count < 0) {
             return lowerIsBetter ? 'down' : 'up';
+        } else {
+            return '';
         }
 
     }

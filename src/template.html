@@ -76,7 +76,7 @@
         <div>
           <h3>${facebook.engagement.engagements.formattedCount}</h3>
           <p>Facebook engagements (28 days)</p>
-          <p class="change"><span class="arrow ${facebook.engagement.engagements.changeDirection}">${facebook.engagement.engagements.changeArrow}</span> ${facebook.engagement.engagements.changeDirection}</p>
+          <p class="change"><span class="arrow ${facebook.engagement.engagements.changeDirection}">${facebook.engagement.engagements.changeArrow}</span> ${facebook.engagement.engagements.change}</p>
         </div>
         <div>
           <h3>${medium.engagement.views.formattedCount}</h3>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <p class="summary">Total impressions/views: <strong>${totalImpressions}</strong></p>
-      <h2>Open Source (Github)</h2>
+      <h2>Open Source &amp; Support (Github)</h2>
       <div class="numbers">
         <div>
           <h3>${github.repositories}</h3>
@@ -99,9 +99,6 @@
           <h3>${github.forks}</h3>
           <p>Forks</p>
         </div>        
-      </div>
-      <h2>Support (Github &amp; Stack Overflow)</h2>
-      <div class="numbers">
         <div>
           <h3>${github.issues.openIssues}</h3>
           <p>Open Issues</p>
@@ -109,7 +106,7 @@
         <div>
           <h3>${github.issues.closeTimeAvg.count}</h3>
           <p>Time To Close Issues (months, avg)</p>
-          <p class="change"><span class="arrow ${github.issues.closeTimeAvg.changeDirection}"></span> ${github.issues.closeTimeAvg.changeDirection}</p>
+          <p class="change"><span class="arrow ${github.issues.closeTimeAvg.changeDirection}">${github.issues.closeTimeAvg.changeArrow}</span> ${github.issues.closeTimeAvg.change}</p>
         </div>
       </div>
       <h2>Blogging (Medium)</h2>

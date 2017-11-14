@@ -28,9 +28,16 @@ function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
     stat.formattedCount = utils.formatNumberValue(count);
     stat.change = utils.formatChangeValue(count, comparisonCount, lowerIsBetter);
     stat.changeLabel = comparisonDaysDiff + ' days';
-    stat.changeArrow = changeDirection === 'up' ? upArrow : downArrow;
     stat.changeDirection = changeDirection;
+    stat.changeArrow = '';
 
+    if (changeDirection === 'up') {
+        stat.changeArrow = upArrow;
+    } else if (changeDirection === 'down') {
+        stat.changeArrow = downArrow;
+    } else {
+    }
+    
     if (stat.link) {
         stat.formattedlink = utils.formatDisplayUrl(stat.link);
     }
@@ -84,8 +91,6 @@ function processStats(stats, comparisonStats) {
 
 function updateWithGithubStats(processedStats, githubStats) {
 
-    console.log('githubStats 2', githubStats);    
-
     var totalStars = 0;
     var totalForks = 0;
     var supportRepo;
@@ -114,11 +119,8 @@ function updateWithGithubStats(processedStats, githubStats) {
 const templateHtml = fs.readFileSync('src/template.html', 'utf8');
 let processedStats = processStats(stats, comparisonStats);
 
-console.log('Why doesnt this work...');
-
 fetch(GITHUB_API_REPOS_URL)
     .then(function(response) {
-      console.log('NEVER GETS HERE! WHY??!!');
       return response.json();
     })
     .then(function(githubStats) {
@@ -134,4 +136,7 @@ fetch(GITHUB_API_REPOS_URL)
           console.log('Updated index.html ✔');
         }
       });
+  })
+  .catch(function(error) {
+      console.log('Error fetching Github stats', error);
   });
