@@ -1,5 +1,11 @@
 var GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
 
+var STACK_OVERFLOW_API_SEARCH_URL = 'https://api.stackexchange.com'
+  + '/2.2/search/advanced?site=stackoverflow&order=desc&sort=creation&key={key}&fromdate={fromdate}&q=samsung internet';
+
+var STACK_OVERFLOW_API_ANSWERS_URL = 'https://api.stackexchange.com' +
+  + '/2.2/users/396246,4007679,2144525/answers?site=stackoverflow&order=desc&sort=activity&key={key}';
+
 var twitterSurveyAwarePercent = 37;
 var eventSurveyAwarePercent = 42;
 
@@ -41,7 +47,7 @@ function setupSurveyCharts() {
 
 }
 
-function parseMediumCSV() {
+function fetchMediumData() {
     Papa.parse(mediumStatsCSVPath, {
         download: true,
         complete: function(data) {
@@ -103,7 +109,7 @@ function setupMediumChart(mediumData) {
     Chartist.Line('#medium-chart', data, options);
 }
 
-function parseStatsJSON() {
+function fetchStatsData() {
 
     fetch(statsJSONPath)
         .then(function(response) {
@@ -124,7 +130,7 @@ function parseStatsJSON() {
 
 }
 
-function parseGithubJSON() {
+function fetchGithubData() {
 
     fetch(GITHUB_API_REPOS_URL)
         .then(function(response) {
@@ -263,8 +269,8 @@ function updateStats(data, comparisonData) {
 
 }
 
-parseStatsJSON();
-parseMediumCSV();
-parseGithubJSON();
+fetchStatsData();
+fetchMediumData();
+fetchGithubData();
 setupSurveyCharts();
 setupServiceWorker();
