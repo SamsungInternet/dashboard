@@ -10,6 +10,7 @@ const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3
 
 const upArrow = '↑';
 const downArrow = '↓';
+const noChangeArrow = '‒';
 
 const comparisonDaysDiff = utils.getDaysDiff(stats.updated, comparisonStats.updated);
 
@@ -29,17 +30,17 @@ function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
     stat.change = utils.formatChangeValue(count, comparisonCount, lowerIsBetter);
     stat.changeLabel = comparisonDaysDiff + ' days';
     stat.changeDirection = changeDirection;
-    stat.changeArrow = '';
 
     if (changeDirection === 'up') {
         stat.changeArrow = upArrow;
     } else if (changeDirection === 'down') {
         stat.changeArrow = downArrow;
     } else {
+        stat.changeArrow = noChangeArrow;
     }
     
     if (stat.link) {
-        stat.formattedlink = utils.formatDisplayUrl(stat.link);
+        stat.formattedlink = `<a href="${stat.link}">${utils.formatDisplayUrl(stat.link)}</a>`;
     }
 
 }
@@ -118,6 +119,8 @@ function updateWithGithubStats(processedStats, githubStats) {
 
 const templateHtml = fs.readFileSync('src/template.html', 'utf8');
 let processedStats = processStats(stats, comparisonStats);
+
+console.log('Fetching Github stats...');
 
 fetch(GITHUB_API_REPOS_URL)
     .then(function(response) {

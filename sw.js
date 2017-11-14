@@ -2,10 +2,8 @@
 
 var version = 18;
 
-// Remember to update this each time
-var mediumStatsCSVPath = 'data/medium/2017-11-13-medium-overview.csv';
-
 importScripts('lib/sw-toolbox.js');
+importScripts('src/data-paths.js');
 
 var precacheList = [
   'index.html',

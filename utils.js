@@ -75,7 +75,7 @@ const utils = {
     },
 
     /**
-     * Return 'up', 'down' or blank string
+     * Return 'up', 'down' or 'same'
      */
     getChangeDirection: function(count, comparisonCount, lowerIsBetter) {
 
@@ -84,7 +84,7 @@ const utils = {
         } else if (comparisonCount - count < 0) {
             return lowerIsBetter ? 'down' : 'up';
         } else {
-            return '';
+            return 'same';
         }
 
     }

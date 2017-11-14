@@ -9,7 +9,10 @@
     <link rel="stylesheet" href="lib/chartist.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="lib/papaparse.js"></script>
+    <script src="lib/moment.js"></script>
     <script src="lib/chartist.js"></script>
+    <script src="src/data-paths.js"></script>
   </head>
   <body>
     <header>
@@ -106,7 +109,6 @@
         <div>
           <h3>${github.issues.closeTimeAvg.count}</h3>
           <p>Time To Close Issues (months, avg)</p>
-          <p class="change"><span class="arrow ${github.issues.closeTimeAvg.changeDirection}">${github.issues.closeTimeAvg.changeArrow}</span> ${github.issues.closeTimeAvg.change}</p>
         </div>
       </div>
       <h2>Blogging (Medium)</h2>
@@ -121,26 +123,26 @@
         <div>
           <h4>WebVR</h4>
           <h3>${seo.webvr.count}</h3>
-          <p>${seo.webvr.link || 'Outside top 250'}</p>
+          <p>${seo.webvr.formattedlink || 'Outside top 250'}</p>
           <p class="change"><span class="arrow ${seo.webvr.changeDirection}">${seo.webvr.changeArrow}</span> ${seo.webvr.change} (${seo.webvr.changeLabel})</p>
         </div>
         <div>
           <h4>Web Payments</h4>
           <h3>${seo.webPayments.count}</h3>
-          <p>${seo.webPayments.link || 'Outside top 250'}</p>
+          <p>${seo.webPayments.formattedlink || 'Outside top 250'}</p>
           <p class="change"><span class="arrow ${seo.webPayments.changeDirection}">${seo.webPayments.changeArrow}</span> ${seo.webPayments.change} (${seo.webPayments.changeLabel})</p>
         </div>
         <div>
           <h4>Progressive Web Apps</h4>
           <h3>${seo.pwas.count}</h3>
-          <p>${seo.pwas.link || 'Outside top 250'}</p>
-          <p class="change"><span class="arrow ${seo.pwas.changeDirection}">${seo.pwas.changeArrow}</span> <span id="seo-pwas-change"></span> (<span id="seo-pwas-change-label"></span>)</p>
+          <p>${seo.pwas.formattedlink || 'Outside top 250'}</p>
+          <p class="change"><span class="arrow ${seo.pwas.changeDirection}">${seo.pwas.changeArrow}</span> ${seo.pwas.change} (${seo.pwas.changeLabel})</p>
         </div>
         <div>
           <h4>Physical Web</h4>
-          <h3 id="seo-physicalweb"></h3>
-          <p id="seo-physicalweb-link">Outside top 250</p>
-          <p class="change"><span class="arrow ${seo.physicalWeb.changeDirection}">${seo.physicalWeb.changeArrow}</span> <span id="seo-physicalweb-change"></span> (<span id="seo-physicalweb-change-label"></span>)</p>
+          <h3>${seo.physicalWeb.count}</h3>
+          <p>${seo.physicalWeb.formattedlink || 'Outside top 250'}</p>
+          <p class="change"><span class="arrow ${seo.physicalWeb.changeDirection}">${seo.physicalWeb.changeArrow}</span> ${seo.physicalWeb.change} (${seo.physicalWeb.changeLabel})</p>
         </div>
       </div>
       <h2>Surveys</h2>

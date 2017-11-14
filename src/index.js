@@ -24,11 +24,6 @@ function setupSurveyChart(chartId, awarePercent) {
 function setupSurveyCharts() {
     setupSurveyChart('twitter', twitterSurveyAwarePercent);
     setupSurveyChart('event', eventSurveyAwarePercent);
-
-    window.addEventListener('resize', function(event) {
-        labelCount = 0;
-    });
-
 }
 
 function fetchMediumData() {
@@ -45,6 +40,7 @@ function setupMediumChart(mediumData) {
 
     // Date, Minutes Read, Views, Visitors
 
+    var labelCount = 0;
     var labels = [];
     var totalTimeReadMins = [];
     var views = [];
@@ -91,6 +87,7 @@ function setupMediumChart(mediumData) {
     };
 
     Chartist.Line('#medium-chart', data, options);
+    labelCount = 0;
 }
 
 if ('serviceWorker' in navigator) {
@@ -106,3 +103,6 @@ if ('serviceWorker' in navigator) {
 } else {
     console.log('Service workers not supported');
 }
+
+fetchMediumData();
+setupSurveyCharts();
