@@ -1,0 +1,26 @@
+{
+  "name": "samsung-internet-dashboard",
+  "version": "1.0.0",
+  "description": "Samsung Internet Developer Advocacy Dashboard",
+  "main": "update.js",
+  "scripts": {
+    "start": "node update",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samsunginternet/dashboard.git"
+  },
+  "author": "Peter O'Shaughnessy <peter.oshaughnessy@gmail.com> (https://peteroshaughnessy.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samsunginternet/dashboard/issues"
+  },
+  "homepage": "https://github.com/samsunginternet/dashboard#readme",
+  "devDependencies": {
+    "es6-template-strings": "^2.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.19.2",
+    "node-fetch": "^1.7.3"
+  }
+}

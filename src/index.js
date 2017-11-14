@@ -1,15 +1,5 @@
-var GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
-
 var twitterSurveyAwarePercent = 37;
 var eventSurveyAwarePercent = 42;
-
-var upArrow = '↑';
-var downArrow = '↓';
-
-var labelCount = 0;
-
-var comparisonDaysDiff = 0;
-
 
 function setupSurveyChart(chartId, awarePercent) {
 
@@ -34,14 +24,9 @@ function setupSurveyChart(chartId, awarePercent) {
 function setupSurveyCharts() {
     setupSurveyChart('twitter', twitterSurveyAwarePercent);
     setupSurveyChart('event', eventSurveyAwarePercent);
-
-    window.addEventListener('resize', function(event) {
-        labelCount = 0;
-    });
-
 }
 
-function parseMediumCSV() {
+function fetchMediumData() {
     Papa.parse(mediumStatsCSVPath, {
         download: true,
         complete: function(data) {
@@ -55,6 +40,7 @@ function setupMediumChart(mediumData) {
 
     // Date, Minutes Read, Views, Visitors
 
+    var labelCount = 0;
     var labels = [];
     var totalTimeReadMins = [];
     var views = [];
@@ -101,170 +87,22 @@ function setupMediumChart(mediumData) {
     };
 
     Chartist.Line('#medium-chart', data, options);
+    labelCount = 0;
 }
 
-function parseStatsJSON() {
+if ('serviceWorker' in navigator) {
 
-    fetch(statsJSONPath)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            fetch(comparisonStatsJSONPath)
-                .then(function(comparisonResponse) {
-                    return comparisonResponse.json();
-                })
-                .then(function(comparisonData) {
-                    return updateStats(data, comparisonData);
-                });
-        })
-        .catch(function(error) {
-            console.error('Error parsing stats JSON', error);
-        });
+    navigator.serviceWorker.register('/sw.js')
+    .then(function() {
+        console.log('Service worker successfully registered');
+    })
+    .catch(function(err) {
+        console.error('Service worker failed to register', err);
+    });
 
+} else {
+    console.log('Service workers not supported');
 }
 
-function parseGithubJSON() {
-
-    fetch(GITHUB_API_REPOS_URL)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            return updateGithubStats(data);
-        })
-        .catch(function(error) {
-            console.error('Error parsing Github JSON', error);
-        });
-
-}
-
-function updateChangeArrow(arrowEl, count, comparisonCount, lowerIsBetter) {
-
-    if (count - comparisonCount < 0) {
-        if (lowerIsBetter) {
-            arrowEl.innerHTML = upArrow;
-            arrowEl.classList.add('up');
-        } else {
-            arrowEl.innerHTML = downArrow;
-            arrowEl.classList.add('down');
-        }
-    } else {
-        if (lowerIsBetter) {
-            arrowEl.innerHTML = downArrow;
-            arrowEl.classList.add('down');
-        } else {
-            arrowEl.innerHTML = upArrow;
-            arrowEl.classList.add('up');
-        }
-    }
-
-}
-
-function updateGithubStats(data) {
-
-    var totalStars = 0;
-    var totalForks = 0;
-    var supportRepo;
-
-    for (var i=0; i < data.items.length; i++) {
-
-        var repo = data.items[i];
-
-        totalStars += repo['stargazers_count'];
-        totalForks += repo['forks'];
-
-        if (repo.name === 'support') {
-            supportRepo = repo;
-        }
-
-    }
-
-    document.getElementById('github-repositories').innerHTML = data['total_count'];
-    document.getElementById('github-stars').innerHTML = totalStars;
-    document.getElementById('github-forks').innerHTML = totalForks;
-
-    document.getElementById('github-support-issues').innerHTML = supportRepo['open_issues_count'];
-
-}
-
-function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
-
-    var statAndComparison = getStatWithComparison(data, comparisonData, pathToStat),
-        stat = statAndComparison[0],
-        comparisonStat = statAndComparison[1],
-        groupName = pathToStat[0],
-        statId = pathToStat[pathToStat.length - 1],
-        count = stat.count,
-        comparisonCount = comparisonStat.count,
-        link = stat.link;
-
-    document.getElementById(`${groupName}-${statId}`).innerHTML = formatNumberValue(count);
-    document.getElementById(`${groupName}-${statId}-change`).innerHTML = formatChangeValue(count, comparisonCount, lowerIsBetter);
-
-    var changeLabelEl = document.getElementById(`${groupName}-${statId}-change-label`);
-
-    if (changeLabelEl) {
-        changeLabelEl.innerHTML = comparisonDaysDiff + ' days';
-    }
-
-    var arrowEl = document.getElementById(`${groupName}-${statId}-change-arrow`);
-
-    updateChangeArrow(arrowEl, count, comparisonCount, lowerIsBetter);
-
-    var linkContainerEl = document.getElementById(`${groupName}-${statId}-link`);
-
-    if (link && linkContainerEl) {
-        var formattedLink = formatDisplayUrl(link);
-        linkContainerEl.innerHTML = `Top result:<br><a href="${link}">${formattedLink}</a>`;
-    }
-
-}
-
-function updateStats(data, comparisonData) {
-
-    if (data.updated) {
-        document.getElementById('last-updated').innerHTML = moment(data.updated).format('DD MMMM YYYY');
-        comparisonDaysDiff = getDaysDiff(data.updated, comparisonData.updated);
-    }
-
-    updateStatWithChange(data, comparisonData, ['devhub', 'audience', 'uniquevisitors']);
-    updateStatWithChange(data, comparisonData, ['medium', 'audience', 'followers']);
-    updateStatWithChange(data, comparisonData, ['twitter', 'audience', 'followers']);
-    updateStatWithChange(data, comparisonData, ['facebook', 'audience', 'followers']);
-    updateStatWithChange(data, comparisonData, ['facebook', 'audience', 'reach']);
-    updateStatWithChange(data, comparisonData, ['instagram', 'audience', 'followers']);
-
-    updateStatWithChange(data, comparisonData, ['twitter', 'engagement', 'impressions']);
-    updateStatWithChange(data, comparisonData, ['twitter', 'engagement', 'mentions']);
-    updateStatWithChange(data, comparisonData, ['facebook', 'engagement', 'views']);
-    updateStatWithChange(data, comparisonData, ['facebook', 'engagement', 'engagements']);
-    updateStatWithChange(data, comparisonData, ['medium', 'engagement', 'views']);
-    updateStatWithChange(data, comparisonData, ['github', 'issues', 'close-time-avg']);
-
-    updateStatWithChange(data, comparisonData, ['seo', 'webvr'], true);
-    updateStatWithChange(data, comparisonData, ['seo', 'webpayments'], true);
-    updateStatWithChange(data, comparisonData, ['seo', 'pwas'], true);
-    updateStatWithChange(data, comparisonData, ['seo', 'physicalweb'], true);
-
-
-    document.getElementById('total-followers').innerHTML = formatNumberValue(
-        data.medium.audience.followers.count +
-        data.twitter.audience.followers.count +
-        data.facebook.audience.followers.count +
-        data.instagram.audience.followers.count);
-
-    document.getElementById('total-impressions').innerHTML = formatNumberValue(
-        data.twitter.engagement.impressions.count +
-        data.facebook.engagement.views.count +
-        data.medium.engagement.views.count);
-
-    console.log('Updated stats from JSON data', data);
-
-}
-
-parseStatsJSON();
-parseMediumCSV();
-parseGithubJSON();
+fetchMediumData();
 setupSurveyCharts();
-setupServiceWorker();

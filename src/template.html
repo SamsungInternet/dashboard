@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#222222">
+    <title>Dashboard</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="lib/chartist.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <script src="lib/papaparse.js"></script>
+    <script src="lib/moment.js"></script>
+    <script src="lib/chartist.js"></script>
+    <script src="src/data-paths.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img height="70px" src="images/samsung-internet-logo-text.svg" alt="Samsung Internet logo"/>
+      </div>
+      <div class="title-and-last-updated">
+        <h1>Developer Advocacy Dashboard</h1>
+        <h3>Last updated: ${lastUpdated}</h3>
+      </div>
+    </header>
+    <main>
+      <h2>Audience</h2>
+      <div class="numbers">
+        <div>
+          <h3>${devHub.audience.uniqueVisitors.formattedCount}</h3>
+          <p>Dev Hub unique visitors</p>
+          <p class="change"><span class="arrow ${devHub.audience.uniqueVisitors.changeDirection}">${devHub.audience.uniqueVisitors.changeArrow}</span> ${devHub.audience.uniqueVisitors.change} (${devHub.audience.uniqueVisitors.changeLabel})</p>
+        </div>
+        <div>
+          <h3>${medium.audience.followers.formattedCount}</h3>
+          <p>Medium followers</p>
+          <p class="change"><span class="arrow ${medium.audience.followers.changeDirection}">${medium.audience.followers.changeArrow}</span> ${medium.audience.followers.change} (${medium.audience.followers.changeLabel})</p>
+        </div>
+        <div>
+          <h3>${twitter.audience.followers.formattedCount}</h3>
+          <p>Twitter followers</p>
+          <p class="change"><span class="arrow ${twitter.audience.followers.changeDirection}">${twitter.audience.followers.changeArrow}</span> ${twitter.audience.followers.change} (${twitter.audience.followers.changeLabel})</p>
+        </div>
+        <div>
+          <h3>${facebook.audience.followers.formattedCount}</h3>
+          <p>Facebook followers</p>
+          <p class="change"><span class="arrow ${facebook.audience.followers.changeDirection}">${facebook.audience.followers.changeArrow}</span> ${facebook.audience.followers.change} (${facebook.audience.followers.changeLabel})</p>
+        </div>
+        <div>
+          <h3>${facebook.audience.reach.formattedCount}</h3>
+          <p>Facebook reach</p>
+          <p class="change"><span class="arrow ${facebook.audience.reach.changeDirection}">${facebook.audience.reach.changeArrow}</span> ${facebook.audience.reach.change} (${facebook.audience.reach.changeLabel})</p>
+        </div>
+        <div>
+          <h3>${instagram.audience.followers.formattedCount}</h3>
+          <p>Instagram followers</p>
+          <p class="change"><span class="arrow ${instagram.audience.followers.changeDirection}">${instagram.audience.followers.changeArrow}</span> ${instagram.audience.followers.change} (${instagram.audience.followers.changeLabel})</p>
+        </div>
+      </div>
+      <p class="summary">Total social media followers: <strong>${totalFollowers}</strong></p>
+      <h2>Engagement</h2>
+      <div class="numbers">
+        <div>
+          <h3>${twitter.engagement.impressions.formattedCount}</h3>
+          <p>Tweet impressions (28 days)</p>
+          <p class="change"><span class="arrow ${twitter.engagement.impressions.changeDirection}">${twitter.engagement.impressions.changeArrow}</span> ${twitter.engagement.impressions.change}</p>
+        </div>
+        <div>
+          <h3>${twitter.engagement.mentions.formattedCount}</h3>
+          <p>Twitter mentions (28 days)</p>
+          <p class="change"><span class="arrow ${twitter.engagement.mentions.changeDirection}">${twitter.engagement.mentions.changeArrow}</span> ${twitter.engagement.mentions.change}</p>
+        </div>
+        <div>
+          <h3>${facebook.engagement.views.formattedCount}</h3>
+          <p>Facebook page views (28 days)</p>
+          <p class="change"><span class="arrow ${facebook.engagement.views.changeDirection}">${facebook.engagement.views.changeArrow}</span> ${facebook.engagement.views.change}</p>
+        </div>
+        <div>
+          <h3>${facebook.engagement.engagements.formattedCount}</h3>
+          <p>Facebook engagements (28 days)</p>
+          <p class="change"><span class="arrow ${facebook.engagement.engagements.changeDirection}">${facebook.engagement.engagements.changeArrow}</span> ${facebook.engagement.engagements.change}</p>
+        </div>
+        <div>
+          <h3>${medium.engagement.views.formattedCount}</h3>
+          <p>Medium views (30 days)</p>
+          <p class="change"><span class="arrow ${medium.engagement.views.changeDirection}">${medium.engagement.views.changeArrow}</span> ${medium.engagement.views.change}</p>
+        </div>
+      </div>
+      <p class="summary">Total impressions/views: <strong>${totalImpressions}</strong></p>
+      <h2>Open Source &amp; Support (Github)</h2>
+      <div class="numbers">
+        <div>
+          <h3>${github.repositories}</h3>
+          <p>Repositories</p>
+        </div>
+        <div>
+          <h3>${github.stars}</h3>
+          <p>Stars</p>
+        </div>
+        <div>
+          <h3>${github.forks}</h3>
+          <p>Forks</p>
+        </div>        
+        <div>
+          <h3>${github.issues.openIssues}</h3>
+          <p>Open Issues</p>
+        </div>
+        <div>
+          <h3>${github.issues.closeTimeAvg.count}</h3>
+          <p>Time To Close Issues (months, avg)</p>
+        </div>
+      </div>
+      <h2>Blogging (Medium)</h2>
+      <div id="medium-chart" class="ct-chart"></div>
+      <div class="key">
+        <span class="colour1">&mdash;</span> Minutes read
+        <span class="colour2">&mdash;</span> Views
+        <span class="colour3">&mdash;</span> Visitors
+      </div>
+      <h2>SEO</h2>
+      <div class="numbers">
+        <div>
+          <h4>WebVR</h4>
+          <h3>${seo.webvr.count}</h3>
+          <p>${seo.webvr.formattedlink || 'Outside top 250'}</p>
+          <p class="change"><span class="arrow ${seo.webvr.changeDirection}">${seo.webvr.changeArrow}</span> ${seo.webvr.change} (${seo.webvr.changeLabel})</p>
+        </div>
+        <div>
+          <h4>Web Payments</h4>
+          <h3>${seo.webPayments.count}</h3>
+          <p>${seo.webPayments.formattedlink || 'Outside top 250'}</p>
+          <p class="change"><span class="arrow ${seo.webPayments.changeDirection}">${seo.webPayments.changeArrow}</span> ${seo.webPayments.change} (${seo.webPayments.changeLabel})</p>
+        </div>
+        <div>
+          <h4>Progressive Web Apps</h4>
+          <h3>${seo.pwas.count}</h3>
+          <p>${seo.pwas.formattedlink || 'Outside top 250'}</p>
+          <p class="change"><span class="arrow ${seo.pwas.changeDirection}">${seo.pwas.changeArrow}</span> ${seo.pwas.change} (${seo.pwas.changeLabel})</p>
+        </div>
+        <div>
+          <h4>Physical Web</h4>
+          <h3>${seo.physicalWeb.count}</h3>
+          <p>${seo.physicalWeb.formattedlink || 'Outside top 250'}</p>
+          <p class="change"><span class="arrow ${seo.physicalWeb.changeDirection}">${seo.physicalWeb.changeArrow}</span> ${seo.physicalWeb.change} (${seo.physicalWeb.changeLabel})</p>
+        </div>
+      </div>
+      <h2>Surveys</h2>
+      <div class="surveys">
+        <div class="survey">
+          <h3>Twitter poll</h3>
+          <div id="twitter-survey-chart" class="ct-chart"></div>
+          <div class="key">
+            <span class="colour1">■</span> Aware of Samsung Internet
+            <span class="colour2">■</span> Not aware of Samsung Internet
+          </div>
+          <p><em>Source: <a href="https://twitter.com/poshaughnessy/status/846813031178874880">Peter's Twitter poll</a>, March 2017</em></p>
+        </div>
+        <div class="survey">
+          <h3>Events feedback</h3>
+          <div id="event-survey-chart" class="ct-chart"></div>
+          <div class="key">
+            <span class="colour1">■</span> Aware of Samsung Internet
+            <span class="colour2">■</span> Not aware of Samsung Internet
+          </div>
+          <p><em>Source: <a href="https://docs.google.com/a/ada.is/spreadsheets/d/1SxnLKkhqOPZPCEYzX0S0WVPaNN6Hs5vFhOi4Py8bLHs/edit?usp=sharing">Event feedback surveys (latest: FullStack)</a></em></p>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2017 Samsung Internet &middot; <a href="https://github.com/SamsungInternet/dashboard">Source on Github</a></p>
+    </footer>
+    <script src="src/index.js"></script>
+  </body>
+</html>

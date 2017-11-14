@@ -98,6 +98,10 @@ main {
   color: #59922b;
 }
 
+.arrow.same {
+  color: #efdf57;
+}
+
 .arrow.down {
   color: #d70206;
 }

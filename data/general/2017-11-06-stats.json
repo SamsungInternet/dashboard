@@ -1,8 +1,8 @@
 {
   "updated": "2017-11-06",
-  "devhub": {
+  "devHub": {
     "audience": {
-      "uniquevisitors": {
+      "uniqueVisitors": {
         "count": 123245
       }
     }
@@ -67,7 +67,7 @@
       "count": 55,
       "link": "https://samsunginter.net/docs/webvr"
     },
-    "webpayments": {
+    "webPayments": {
       "count": 12,
       "link": "https://samsunginter.net/docs/web-payments"
     },
@@ -75,7 +75,7 @@
       "count": 12,
       "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
     },
-    "physicalweb": {
+    "physicalWeb": {
       "count": 53,
       "link": "https://samsunginter.net/docs/physical-web"
     }
