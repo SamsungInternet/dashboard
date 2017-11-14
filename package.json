@@ -19,6 +19,8 @@
   "homepage": "https://github.com/samsunginternet/dashboard#readme",
   "devDependencies": {
     "es6-template-strings": "^2.0.1",
-    "moment": "^2.19.2"
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.19.2",
+    "node-fetch": "^1.7.3"
   }
 }

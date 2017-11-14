@@ -1,9 +1,11 @@
 'use strict';
 
-var version = 17;
+var version = 18;
+
+// Remember to update this each time
+var mediumStatsCSVPath = 'data/medium/2017-11-13-medium-overview.csv';
 
 importScripts('lib/sw-toolbox.js');
-importScripts('src/data-paths.js');
 
 var precacheList = [
   'index.html',
@@ -12,9 +14,7 @@ var precacheList = [
   'images/icon192.png',
   'images/icon512.png',
   'images/samsung-internet-logo-text.svg',
-  mediumStatsCSVPath,
-  statsJSONPath,
-  comparisonStatsJSONPath
+  mediumStatsCSVPath
 ];
 
 console.log('precacheList', precacheList);

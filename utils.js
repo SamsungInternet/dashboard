@@ -1,5 +1,7 @@
 var MAX_DISPLAY_URL_LENGTH = 35;
 
+const moment = require('moment');
+
 const utils = {
 
     isInteger: function(number) {

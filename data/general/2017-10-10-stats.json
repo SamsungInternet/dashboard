@@ -1,8 +1,8 @@
 {
   "updated": "2017-10-10",
-  "devhub": {
+  "devHub": {
     "audience": {
-      "uniquevisitors": {
+      "uniqueVisitors": {
         "count": 16167
       }
     }
@@ -66,14 +66,14 @@
     "webvr": {
       "count": "N/A"
     },
-    "webpayments": {
+    "webPayments": {
       "count": 27,
       "link": "https://samsunginter.net/docs/web-payments"
     },
     "pwas": {
       "count": "N/A"
     },
-    "physicalweb": {
+    "physicalWeb": {
       "count": "N/A"
     }
   }
