@@ -38,3 +38,13 @@ to the [Dashboard Updater browser extension](extension/README.md).
 
 * For our event survey feedback, see [the Google spreadsheet here](https://docs.google.com/spreadsheets/d/1SxnLKkhqOPZPCEYzX0S0WVPaNN6Hs5vFhOi4Py8bLHs/edit#gid=2048114756).
 * Update the variable at the top of `index.js`.
+
+### And then...
+
+```
+npm start
+```
+
+This will run `update.js` and spit out the new `index.html`, based on the template in `src/template.html`.
+
+Now this page can be served with any static HTML server. We're hosting on Github Pages - just push to `master` to deploy.

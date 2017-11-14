@@ -274,3 +274,17 @@ fetchMediumData();
 fetchGithubData();
 setupSurveyCharts();
 setupServiceWorker();
+
+if ('serviceWorker' in navigator) {
+
+    navigator.serviceWorker.register('/sw.js')
+    .then(function() {
+        console.log('Service worker successfully registered');
+    })
+    .catch(function(err) {
+        console.error('Service worker failed to register', err);
+    });
+
+} else {
+    console.log('Service workers not supported');
+}
