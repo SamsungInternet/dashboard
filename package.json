@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/samsunginternet/dashboard#readme",
   "devDependencies": {
+    "dotenv": "^4.0.0",
     "es6-template-strings": "^2.0.1",
     "https-proxy-agent": "^2.1.0",
     "moment": "^2.19.2",

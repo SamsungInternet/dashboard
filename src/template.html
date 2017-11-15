@@ -30,32 +30,32 @@
         <div>
           <h3>${devHub.audience.uniqueVisitors.formattedCount}</h3>
           <p>Dev Hub unique visitors</p>
-          <p class="change"><span class="arrow ${devHub.audience.uniqueVisitors.changeDirection}">${devHub.audience.uniqueVisitors.changeArrow}</span> ${devHub.audience.uniqueVisitors.change} (${devHub.audience.uniqueVisitors.changeLabel})</p>
+          <p class="change"><span class="arrow ${devHub.audience.uniqueVisitors.changeDirection}">${devHub.audience.uniqueVisitors.changeArrow}</span> ${devHub.audience.uniqueVisitors.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h3>${medium.audience.followers.formattedCount}</h3>
           <p>Medium followers</p>
-          <p class="change"><span class="arrow ${medium.audience.followers.changeDirection}">${medium.audience.followers.changeArrow}</span> ${medium.audience.followers.change} (${medium.audience.followers.changeLabel})</p>
+          <p class="change"><span class="arrow ${medium.audience.followers.changeDirection}">${medium.audience.followers.changeArrow}</span> ${medium.audience.followers.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h3>${twitter.audience.followers.formattedCount}</h3>
           <p>Twitter followers</p>
-          <p class="change"><span class="arrow ${twitter.audience.followers.changeDirection}">${twitter.audience.followers.changeArrow}</span> ${twitter.audience.followers.change} (${twitter.audience.followers.changeLabel})</p>
+          <p class="change"><span class="arrow ${twitter.audience.followers.changeDirection}">${twitter.audience.followers.changeArrow}</span> ${twitter.audience.followers.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h3>${facebook.audience.followers.formattedCount}</h3>
           <p>Facebook followers</p>
-          <p class="change"><span class="arrow ${facebook.audience.followers.changeDirection}">${facebook.audience.followers.changeArrow}</span> ${facebook.audience.followers.change} (${facebook.audience.followers.changeLabel})</p>
+          <p class="change"><span class="arrow ${facebook.audience.followers.changeDirection}">${facebook.audience.followers.changeArrow}</span> ${facebook.audience.followers.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h3>${facebook.audience.reach.formattedCount}</h3>
           <p>Facebook reach</p>
-          <p class="change"><span class="arrow ${facebook.audience.reach.changeDirection}">${facebook.audience.reach.changeArrow}</span> ${facebook.audience.reach.change} (${facebook.audience.reach.changeLabel})</p>
+          <p class="change"><span class="arrow ${facebook.audience.reach.changeDirection}">${facebook.audience.reach.changeArrow}</span> ${facebook.audience.reach.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h3>${instagram.audience.followers.formattedCount}</h3>
           <p>Instagram followers</p>
-          <p class="change"><span class="arrow ${instagram.audience.followers.changeDirection}">${instagram.audience.followers.changeArrow}</span> ${instagram.audience.followers.change} (${instagram.audience.followers.changeLabel})</p>
+          <p class="change"><span class="arrow ${instagram.audience.followers.changeDirection}">${instagram.audience.followers.changeArrow}</span> ${instagram.audience.followers.change} (${changeSinceLabel})</p>
         </div>
       </div>
       <p class="summary">Total social media followers: <strong>${totalFollowers}</strong></p>
@@ -88,7 +88,7 @@
         </div>
       </div>
       <p class="summary">Total impressions/views: <strong>${totalImpressions}</strong></p>
-      <h2>Open Source &amp; Support (Github)</h2>
+      <h2>Open Source &amp; Support (Github, Stack Overflow)</h2>
       <div class="numbers">
         <div>
           <h3>${github.repositories}</h3>
@@ -110,6 +110,16 @@
           <h3>${github.issues.closeTimeAvg.count}</h3>
           <p>Time To Close Issues (months, avg)</p>
         </div>
+        <div>
+        </div>
+        <div>
+          <h3>${stackoverflow.questions}</h3>
+          <p>Questions asked (${changeSinceLabel})</p>
+        </div>
+        <div>
+          <h3>${stackoverflow.answers}</h3>
+          <p>Answers given (${changeSinceLabel}</p>
+        </div>
       </div>
       <h2>Blogging (Medium)</h2>
       <div id="medium-chart" class="ct-chart"></div>
@@ -124,25 +134,25 @@
           <h4>WebVR</h4>
           <h3>${seo.webvr.count}</h3>
           <p>${seo.webvr.formattedlink || 'Outside top 250'}</p>
-          <p class="change"><span class="arrow ${seo.webvr.changeDirection}">${seo.webvr.changeArrow}</span> ${seo.webvr.change} (${seo.webvr.changeLabel})</p>
+          <p class="change"><span class="arrow ${seo.webvr.changeDirection}">${seo.webvr.changeArrow}</span> ${seo.webvr.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h4>Web Payments</h4>
           <h3>${seo.webPayments.count}</h3>
           <p>${seo.webPayments.formattedlink || 'Outside top 250'}</p>
-          <p class="change"><span class="arrow ${seo.webPayments.changeDirection}">${seo.webPayments.changeArrow}</span> ${seo.webPayments.change} (${seo.webPayments.changeLabel})</p>
+          <p class="change"><span class="arrow ${seo.webPayments.changeDirection}">${seo.webPayments.changeArrow}</span> ${seo.webPayments.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h4>Progressive Web Apps</h4>
           <h3>${seo.pwas.count}</h3>
           <p>${seo.pwas.formattedlink || 'Outside top 250'}</p>
-          <p class="change"><span class="arrow ${seo.pwas.changeDirection}">${seo.pwas.changeArrow}</span> ${seo.pwas.change} (${seo.pwas.changeLabel})</p>
+          <p class="change"><span class="arrow ${seo.pwas.changeDirection}">${seo.pwas.changeArrow}</span> ${seo.pwas.change} (${changeSinceLabel})</p>
         </div>
         <div>
           <h4>Physical Web</h4>
           <h3>${seo.physicalWeb.count}</h3>
           <p>${seo.physicalWeb.formattedlink || 'Outside top 250'}</p>
-          <p class="change"><span class="arrow ${seo.physicalWeb.changeDirection}">${seo.physicalWeb.changeArrow}</span> ${seo.physicalWeb.change} (${seo.physicalWeb.changeLabel})</p>
+          <p class="change"><span class="arrow ${seo.physicalWeb.changeDirection}">${seo.physicalWeb.changeArrow}</span> ${seo.physicalWeb.change} (${changeSinceLabel})</p>
         </div>
       </div>
       <h2>Surveys</h2>
