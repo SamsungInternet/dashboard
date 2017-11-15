@@ -1,6 +1,7 @@
 const fs = require('fs');
 const template = require('es6-template-strings');
-const fetch = require('isomorphic-fetch');
+const fetch = require('node-fetch');
+const httpsProxyAgent = require('https-proxy-agent');
 const moment = require('moment');
 const utils = require('./utils');
 const stats = require('./data/general/2017-11-13-stats.json');
@@ -120,9 +121,17 @@ function updateWithGithubStats(processedStats, githubStats) {
 const templateHtml = fs.readFileSync('src/template.html', 'utf8');
 let processedStats = processStats(stats, comparisonStats);
 
+const proxy = process.env.http_proxy;
+let options = null;
+
+if (proxy) {
+    console.log('Using proxy server', proxy);
+    options = {agent: new httpsProxyAgent(proxy)};
+}
+
 console.log('Fetching Github stats...');
 
-fetch(GITHUB_API_REPOS_URL)
+fetch(GITHUB_API_REPOS_URL, options)
     .then(function(response) {
       return response.json();
     })
