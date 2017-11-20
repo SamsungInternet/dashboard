@@ -6,8 +6,8 @@ const fetch = require('node-fetch');
 const httpsProxyAgent = require('https-proxy-agent');
 const moment = require('moment');
 const utils = require('./utils');
-const stats = require('./data/general/2017-11-13-stats.json');
-const comparisonStats = require('./data/general/2017-10-10-stats.json');
+const stats = require('./data/general/2017-11-20-stats.json');
+const comparisonStats = require('./data/general/2017-10-24-stats.json');
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
