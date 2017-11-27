@@ -71,19 +71,19 @@
   },
   "seo": {
     "webvr": {
-      "count": 48,
+      "count": 32,
       "link": "https://samsunginter.net/docs/webvr"
     },
     "webPayments": {
-      "count": 13,
-      "link": "https://samsunginter.net/docs/web-payments"
+      "count": 10,
+      "link": "https://medium.com/samsung-internet-dev/how-to-take-payments-on-the-web-with-the-payment-request-api-a523f6fc7c1f"
     },
     "pwas": {
       "count": 12,
       "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
     },
     "physicalWeb": {
-      "count": 51,
+      "count": 61,
       "link": "https://samsunginter.net/docs/physical-web"
     }
   }
