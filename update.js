@@ -10,8 +10,8 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2017-11-27-stats.json');
-const comparisonStats = require('./data/general/2017-10-31-stats.json');
+const stats = require('./data/general/2017-12-04-stats.json');
+const comparisonStats = require('./data/general/2017-11-06-stats.json');
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -21,7 +21,7 @@ assert(process.env.STACK_OVERFLOW_API_KEY, 'missing STACK_OVERFLOW_API_KEY in en
 const STACK_OVERFLOW_FROM_DATE_SECS = Math.floor(moment(comparisonStats.updated).valueOf() / 1000);
 const STACK_OVERFLOW_KEY = process.env.STACK_OVERFLOW_API_KEY;
 const STACK_OVERFLOW_USER_IDS = [396246,4007679,2144525];
-const STACK_OVERFLOW_QUESTIONS_URL = `https://api.stackexchange.com/2.2/search/advanced?site=stackoverflow&order=desc&sort=creation&key=${STACK_OVERFLOW_KEY}&q=samsung%20internet&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`; 
+const STACK_OVERFLOW_QUESTIONS_URL = `https://api.stackexchange.com/2.2/search/advanced?site=stackoverflow&order=desc&sort=creation&key=${STACK_OVERFLOW_KEY}&q=samsung%20internet&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`;
 const STACK_OVERFLOW_ANSWERS_URL = `https://api.stackexchange.com/2.2/users/${STACK_OVERFLOW_USER_IDS.join(';')}/answers?site=stackoverflow&order=desc&sort=activity&key=${STACK_OVERFLOW_KEY}&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`;
 
 const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
@@ -62,7 +62,7 @@ function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
     } else {
         stat.changeArrow = noChangeArrow;
     }
-    
+
     if (stat.link) {
         stat.formattedlink = `<a href="${stat.link}">${utils.formatDisplayUrl(stat.link)}</a>`;
     }
@@ -72,11 +72,11 @@ function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
 function processStats(stats, comparisonStats) {
 
   let processedStats = {};
-  
+
   // Copy stats to keep the original object clean
   Object.assign(processedStats, stats);
 
-  // Add the comparison data for each stat we want to display 
+  // Add the comparison data for each stat we want to display
   updateStatWithChange(processedStats, comparisonStats, ['devHub', 'audience', 'uniqueVisitors']);
   updateStatWithChange(processedStats, comparisonStats, ['medium', 'audience', 'followers']);
   updateStatWithChange(processedStats, comparisonStats, ['twitter', 'audience', 'followers']);
@@ -99,7 +99,7 @@ function processStats(stats, comparisonStats) {
   // Add some additional data we want to display
   processedStats.lastUpdated = moment(stats.updated).format('DD MMMM YYYY');
   processedStats.changeSinceLabel = comparisonDaysDiff + ' days';
-  
+
   processedStats.totalFollowers = utils.formatNumberValue(
         stats.medium.audience.followers.count +
         stats.twitter.audience.followers.count +
@@ -121,7 +121,7 @@ async function fetchGithubStats() {
 
     try {
         const response = await fetch(GITHUB_API_REPOS_URL, fetchOptions);
-        return await response.json();  
+        return await response.json();
     } catch(error) {
         console.log('Error fetching Github stats', error);
     };
@@ -139,7 +139,7 @@ async function fetchStackOverflowQuestionStats() {
         console.log('Error fetching Stack Overflow question stats', error);
     }
 
-} 
+}
 
 async function fetchStackOverflowAnswerStats() {
 
@@ -204,7 +204,7 @@ function updateWithStackOverflowStats(processedStats, stackOverflowStats) {
 
 function writeHtml(processedStats) {
 
-    const templateHtml = fs.readFileSync('src/template.html', 'utf8');    
+    const templateHtml = fs.readFileSync('src/template.html', 'utf8');
     const html = template(templateHtml, processedStats);
 
     fs.writeFile('index.html', html, function(err) {
