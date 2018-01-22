@@ -24,7 +24,7 @@ to the [Dashboard Updater browser extension](extension/README.md).
   * To find Facebook stats, check the 28 day like increase [here](https://www.facebook.com/samsunginternet/insights/) and look for 'follows' on the right-hand side [here](https://www.facebook.com/samsunginternet).
   * To find Instagram followers, see [here](https://www.instagram.com/samsunginternet/).
   * To find the average Github issue response time, see [here and click the little refresh link](http://issuestats.com/github/samsunginternet/support).
-  * To get the SEO rankings, you can use [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/).
+  * To get the SEO rankings, I previously used [serps.com/tools/rank-checker/](https://serps.com/tools/rank-checker/) but it seems to no longer work, so I'm now testing at google.com (select "Use google.com" or it will redirect back), using a private browsing session.
 * Update the filenames in `src/data-paths.js`.
 
 ### Medium graph
