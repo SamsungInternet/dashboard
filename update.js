@@ -23,6 +23,7 @@ const STACK_OVERFLOW_KEY = process.env.STACK_OVERFLOW_API_KEY;
 const STACK_OVERFLOW_USER_IDS = [396246,4007679,2144525];
 const STACK_OVERFLOW_QUESTIONS_URL = `https://api.stackexchange.com/2.2/search/advanced?site=stackoverflow&order=desc&sort=creation&key=${STACK_OVERFLOW_KEY}&q=samsung%20internet&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`;
 const STACK_OVERFLOW_ANSWERS_URL = `https://api.stackexchange.com/2.2/users/${STACK_OVERFLOW_USER_IDS.join(';')}/answers?site=stackoverflow&order=desc&sort=activity&key=${STACK_OVERFLOW_KEY}&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`;
+const STACK_OVERFLOW_COMMENTS_URL = `https://api.stackexchange.com/2.2/users/${STACK_OVERFLOW_USER_IDS.join(';')}/comments?site=stackoverflow&order=desc&key=${STACK_OVERFLOW_KEY}&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`;
 
 const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
 
@@ -45,8 +46,6 @@ function updateStatWithChange(data, comparisonData, pathToStat, lowerIsBetter) {
     var statAndComparison = utils.getStatWithComparison(data, comparisonData, pathToStat),
         stat = statAndComparison[0],
         comparisonStat = statAndComparison[1],
-        groupName = pathToStat[0],
-        statId = pathToStat[pathToStat.length - 1],
         count = stat.count,
         comparisonCount = comparisonStat.count,
         changeDirection = utils.getChangeDirection(count, comparisonCount, lowerIsBetter);
@@ -154,12 +153,27 @@ async function fetchStackOverflowAnswerStats() {
 
 }
 
+async function fetchStackOverflowCommentStats() {
+
+  console.log('Fetching Stack Overflow comment stats');
+
+  try {
+    const response = await fetch(STACK_OVERFLOW_COMMENTS_URL, fetchOptions);
+    return await response.json();
+  } catch(error) {
+    console.log('Error fetching Stack Overflow comment stats', error);
+  }
+
+}
+
+
 async function fetchStackOverflowStats() {
 
     try {
         const questionStats = await fetchStackOverflowQuestionStats();
         const answerStats = await fetchStackOverflowAnswerStats();
-        return {questions: questionStats, answers: answerStats};
+        const commentStats = await fetchStackOverflowCommentStats();
+        return {questions: questionStats, answers: answerStats, comments: commentStats};
     } catch(error) {
         console.log('Error fetching Stack Overflow stats', error);
     }
@@ -197,7 +211,7 @@ function updateWithStackOverflowStats(processedStats, stackOverflowStats) {
 
     processedStats.stackoverflow = {
         questions: stackOverflowStats.questions.items.length,
-        answers: stackOverflowStats.answers.items.length
+        answersAndComments: stackOverflowStats.answers.items.length + stackOverflowStats.comments.items.length
     };
 
 }
