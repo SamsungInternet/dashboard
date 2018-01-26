@@ -27,6 +27,12 @@ const STACK_OVERFLOW_COMMENTS_URL = `https://api.stackexchange.com/2.2/users/${S
 
 const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
 
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-01-01';
+const GITHUB_USERNAMES = ['poshaughnessy', 'diekus', 'AdaRoseCannon', 'torgo', 'thisisjofrank'];
+// Construct username parameters by adding 'author%3A' in front of each username, followed by a plus
+const GITHUB_USER_PARAMS = GITHUB_USERNAMES.reduce(function(accumulator, value) { return `author%3A${value}+${accumulator}`; }, '');
+const GITHUB_API_PULL_REQUESTS_URL = `https://api.github.com/search/issues?q=${GITHUB_USER_PARAMS}type%3Apr+sort%3Aupdated+created%3A%3E${GITHUB_PULL_REQUESTS_SINCE_DATE}`
+
 const upArrow = '↑';
 const downArrow = '↓';
 const noChangeArrow = '‒';
@@ -127,6 +133,19 @@ async function fetchGithubStats() {
 
 }
 
+async function fetchGithubPullRequests() {
+
+    console.log('Fetching Github Pull Requests...');
+
+    try {
+        const response = await fetch(GITHUB_API_PULL_REQUESTS_URL, fetchOptions);
+        return await response.json();
+    } catch(error) {
+        console.log('Error fetching Github PRs', error);
+    }
+ 
+}
+
 async function fetchStackOverflowQuestionStats() {
 
     console.log('Fetching Stack Overflow question stats');
@@ -207,6 +226,18 @@ function updateWithGithubStats(processedStats, githubStats) {
 
 }
 
+function updateWithGithubPRs(processedStats, githubPRs) {
+
+    processedStats.github.pullrequests = {count: githubPRs['total_count']};
+
+    processedStats.github.pullrequests.list = 
+        githubPRs.items.reduce(function(accumulator, value) { 
+            var repo = value.repository_url.replace('https://api.github.com/repos/', '');
+            return `${accumulator}<li>${repo}: <a href="${value.html_url}">${value.title}</a> by <a href="${value.user.html_url}">${value.user.login}</a></li>`;
+        }, '');
+
+}
+
 function updateWithStackOverflowStats(processedStats, stackOverflowStats) {
 
     processedStats.stackoverflow = {
@@ -236,6 +267,9 @@ async function fetchStatsAndWriteHtml() {
 
     const githubStats = await fetchGithubStats();
     updateWithGithubStats(processedStats, githubStats);
+
+    const githubPRs = await fetchGithubPullRequests();
+    updateWithGithubPRs(processedStats, githubPRs);
 
     const stackOverflowStats = await fetchStackOverflowStats();
     updateWithStackOverflowStats(processedStats, stackOverflowStats);

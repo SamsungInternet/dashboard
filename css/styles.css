@@ -106,6 +106,16 @@ main {
   color: #d70206;
 }
 
+.pull-requests {
+  text-align: center;
+}
+
+.pull-requests ul {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 footer {
   margin-top: 1.5em;
 }
