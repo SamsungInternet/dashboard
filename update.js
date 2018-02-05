@@ -10,7 +10,7 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-01-29-stats.json');
+const stats = require('./data/general/2018-02-05-stats.json');
 const comparisonStats = require('./data/general/2018-01-08-stats.json');
 
 // Load local environment variables from .env
