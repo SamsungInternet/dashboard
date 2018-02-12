@@ -1,0 +1,88 @@
+{
+  "updated": "2018-02-12",
+  "devHub": {
+    "audience": {
+      "uniqueVisitors": {
+        "count": 21788
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 2400
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 40576
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1342
+      }
+    },
+    "engagement": {
+      "impressions": {
+      },
+      "mentions": {
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 323
+      },
+      "reach": {
+        "count": 696
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 13
+      },
+      "views": {
+        "count": 75
+      },
+      "engagements": {
+        "count": 109
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 51
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 5
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 45,
+      "link": "https://pusher.com/sessions/meetup/js-monthly-london/webvr-how-to-create-virtual-worlds-with-javascript"
+    },
+    "webPayments": {
+      "count": 35,
+      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+    },
+    "pwas": {
+      "count": 12,
+      "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
+    },
+    "physicalWeb": {
+      "count": 72,
+      "link": "https://samsunginter.net/docs/physical-web"
+    }
+  }
+}
