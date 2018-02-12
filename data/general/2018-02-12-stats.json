@@ -27,8 +27,10 @@
     },
     "engagement": {
       "impressions": {
+        "count": 42700
       },
       "mentions": {
+        "count": 109
       }
     }
   },
