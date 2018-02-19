@@ -10,8 +10,8 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-02-12-stats.json');
-const comparisonStats = require('./data/general/2018-01-15-stats.json');
+const stats = require('./data/general/2018-02-19-stats.json');
+const comparisonStats = require('./data/general/2018-01-22-stats.json');
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -27,7 +27,7 @@ const STACK_OVERFLOW_COMMENTS_URL = `https://api.stackexchange.com/2.2/users/${S
 
 const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
 
-const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-01-01';
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-01-15';
 const GITHUB_USERNAMES = ['poshaughnessy', 'diekus', 'AdaRoseCannon', 'torgo', 'thisisjofrank'];
 // Construct username parameters by adding 'author%3A' in front of each username, followed by a plus
 const GITHUB_USER_PARAMS = GITHUB_USERNAMES.reduce(function(accumulator, value) { return `author%3A${value}+${accumulator}`; }, '');
@@ -143,7 +143,7 @@ async function fetchGithubPullRequests() {
     } catch(error) {
         console.log('Error fetching Github PRs', error);
     }
- 
+
 }
 
 async function fetchStackOverflowQuestionStats() {
@@ -230,8 +230,8 @@ function updateWithGithubPRs(processedStats, githubPRs) {
 
     processedStats.github.pullrequests = {count: githubPRs['total_count']};
 
-    processedStats.github.pullrequests.list = 
-        githubPRs.items.reduce(function(accumulator, value) { 
+    processedStats.github.pullrequests.list =
+        githubPRs.items.reduce(function(accumulator, value) {
             var repo = value.repository_url.replace('https://api.github.com/repos/', '');
             return `${accumulator}<li>${repo}: <a href="${value.html_url}">${value.title}</a> by <a href="${value.user.html_url}">${value.user.login}</a></li>`;
         }, '');
