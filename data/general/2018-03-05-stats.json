@@ -1,0 +1,90 @@
+{
+  "updated": "2018-03-05",
+  "devHub": {
+    "audience": {
+      "uniqueVisitors": {
+        "count": 21391
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 2500
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 39380
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1392
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 39800
+      },
+      "mentions": {
+        "count": 102
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 344
+      },
+      "reach": {
+        "count": 921
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 26
+      },
+      "views": {
+        "count": 116
+      },
+      "engagements": {
+        "count": 133
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 53
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 5
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 39,
+      "link": "https://samsunginter.net/docs/webvr"
+    },
+    "webPayments": {
+      "count": 20,
+      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+    },
+    "pwas": {
+      "count": 10,
+      "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
+    },
+    "physicalWeb": {
+      "count": 48,
+      "link": "https://samsunginter.net/docs/physical-web"
+    }
+  }
+}
