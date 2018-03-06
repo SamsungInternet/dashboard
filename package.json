@@ -20,8 +20,8 @@
   "devDependencies": {
     "dotenv": "^4.0.0",
     "es6-template-strings": "^2.0.1",
-    "https-proxy-agent": "^2.1.0",
-    "moment": "^2.19.2",
+    "https-proxy-agent": "^2.2.0",
+    "moment": "^2.21.0",
     "node-fetch": "^1.7.3"
   }
 }
