@@ -1,0 +1,90 @@
+{
+  "updated": "2018-03-12",
+  "devHub": {
+    "audience": {
+      "uniqueVisitors": {
+        "count": 20416
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 2500
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 44018
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1418
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 75200
+      },
+      "mentions": {
+        "count": 165
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 365
+      },
+      "reach": {
+        "count": 983
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 43
+      },
+      "views": {
+        "count": 136
+      },
+      "engagements": {
+        "count": 190
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 56
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 5
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 126,
+      "link": "https://www.hanselminutes.com/565/discovering-webvr-with-ada-rose-edwards"
+    },
+    "webPayments": {
+      "count": 38,
+      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+    },
+    "pwas": {
+      "count": 10,
+      "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
+    },
+    "physicalWeb": {
+      "count": 64,
+      "link": "https://samsunginter.net/docs/physical-web"
+    }
+  }
+}
