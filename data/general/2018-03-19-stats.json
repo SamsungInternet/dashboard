@@ -1,0 +1,90 @@
+{
+  "updated": "2018-03-19",
+  "devHub": {
+    "audience": {
+      "uniqueVisitors": {
+        "count": 20599
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 2600
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 45323
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1441
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 84700
+      },
+      "mentions": {
+        "count": 191
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 376
+      },
+      "reach": {
+        "count": 1454
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 56
+      },
+      "views": {
+        "count": 165
+      },
+      "engagements": {
+        "count": 202
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 60
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 5
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 21,
+      "link": "https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c"
+    },
+    "webPayments": {
+      "count": 13,
+      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+    },
+    "pwas": {
+      "count": 8,
+      "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
+    },
+    "physicalWeb": {
+      "count": 96,
+      "link": "https://samsunginter.net/docs/physical-web"
+    }
+  }
+}
