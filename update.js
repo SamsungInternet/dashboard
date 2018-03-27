@@ -10,8 +10,8 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-03-19-stats.json');
-const comparisonStats = require('./data/general/2018-02-19-stats.json');
+const stats = require('./data/general/2018-03-27-stats.json');
+const comparisonStats = require('./data/general/2018-02-26-stats.json');
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -99,7 +99,7 @@ function processStats(stats, comparisonStats) {
   updateStatWithChange(processedStats, comparisonStats, ['seo', 'webvr'], true);
   updateStatWithChange(processedStats, comparisonStats, ['seo', 'webPayments'], true);
   updateStatWithChange(processedStats, comparisonStats, ['seo', 'pwas'], true);
-  updateStatWithChange(processedStats, comparisonStats, ['seo', 'physicalWeb'], true);
+  updateStatWithChange(processedStats, comparisonStats, ['seo', 'webBluetooth'], true);
 
   // Add some additional data we want to display
   processedStats.lastUpdated = moment(stats.updated).format('DD MMMM YYYY');
