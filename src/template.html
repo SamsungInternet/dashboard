@@ -28,11 +28,6 @@
       <h2>Audience</h2>
       <div class="numbers">
         <div>
-          <h3>${devHub.audience.uniqueVisitors.formattedCount}</h3>
-          <p>Dev Hub unique visitors</p>
-          <p class="change"><span class="arrow ${devHub.audience.uniqueVisitors.changeDirection}">${devHub.audience.uniqueVisitors.changeArrow}</span> ${devHub.audience.uniqueVisitors.change} (${changeSinceLabel})</p>
-        </div>
-        <div>
           <h3>${medium.audience.followers.formattedCount}</h3>
           <p>Medium followers</p>
           <p class="change"><span class="arrow ${medium.audience.followers.changeDirection}">${medium.audience.followers.changeArrow}</span> ${medium.audience.followers.change} (${changeSinceLabel})</p>
@@ -61,6 +56,11 @@
       <p class="summary">Total social media followers: <strong>${totalFollowers}</strong></p>
       <h2>Engagement</h2>
       <div class="numbers">
+        <div>
+          <h3>${devHub.engagement.uniqueVisitors.formattedCount}</h3>
+          <p>Dev Hub unique visitors</p>
+          <p class="change"><span class="arrow ${devHub.engagement.uniqueVisitors.changeDirection}">${devHub.engagement.uniqueVisitors.changeArrow}</span> ${devHub.engagement.uniqueVisitors.change} (${changeSinceLabel})</p>
+        </div>
         <div>
           <h3>${twitter.engagement.impressions.formattedCount}</h3>
           <p>Tweet impressions (28 days)</p>

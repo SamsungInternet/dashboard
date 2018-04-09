@@ -1,95 +1,90 @@
 {
-  "updated": "2018-03-12",
+  "updated": "2018-04-09",
   "devHub": {
-    "audience": {
-      "uniqueVisitors": {
-        "count": 20416
-      }
-    },
     "engagement": {
       "uniqueVisitors": {
-        "count": 20416
+        "count": 19191
       }
     }
   },
   "medium": {
     "audience": {
       "followers": {
-        "count": 2500
+        "count": 2600
       }
     },
     "engagement": {
       "views": {
-        "count": 44018
+        "count": 41033
       }
     }
   },
   "twitter": {
     "audience": {
       "followers": {
-        "count": 1418
+        "count": 1486
       }
     },
     "engagement": {
       "impressions": {
-        "count": 75200
+        "count": 54400
       },
       "mentions": {
-        "count": 165
+        "count": 142
       }
     }
   },
   "facebook": {
     "audience": {
       "followers": {
-        "count": 365
+        "count": 394
       },
       "reach": {
-        "count": 983
+        "count": 1311
       }
     },
     "engagement": {
       "likes": {
-        "count": 43
+        "count": 38
       },
       "views": {
-        "count": 136
+        "count": 175
       },
       "engagements": {
-        "count": 190
+        "count": 150
       }
     }
   },
   "instagram": {
     "audience": {
       "followers": {
-        "count": 56
+        "count": 59
       }
     }
   },
   "github": {
     "issues": {
       "closeTimeAvg": {
-        "count": 5
+        "count": 3
       }
     }
   },
   "seo": {
     "webvr": {
-      "count": 126,
-      "link": "https://www.hanselminutes.com/565/discovering-webvr-with-ada-rose-edwards"
+      "count": 14,
+      "link": "https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c"
     },
     "webPayments": {
-      "count": 38,
+      "count": 12,
       "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
     },
     "pwas": {
-      "count": 10,
+      "count": 6,
       "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
     },
-    "physicalWeb": {
-      "count": 64,
-      "link": "https://samsunginter.net/docs/physical-web"
+    "webBluetooth": {
+      "count": 34,
+      "link": "https://samsunginter.net/docs/web-bluetooth"
     }
   }
 }
