@@ -39,7 +39,7 @@ const noChangeArrow = '‒';
 
 const comparisonDaysDiff = utils.getDaysDiff(stats.updated, comparisonStats.updated);
 
-const proxy = process.env.http_proxy;
+const proxy = null; //process.env.http_proxy;
 let fetchOptions = null;
 
 if (proxy) {
