@@ -10,8 +10,8 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-04-16-stats.json');
-const comparisonStats = require('./data/general/2018-03-19-stats.json');
+const stats = require('./data/general/2018-04-24-stats.json');
+const comparisonStats = require('./data/general/2018-03-27-stats.json');
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -27,11 +27,14 @@ const STACK_OVERFLOW_COMMENTS_URL = `https://api.stackexchange.com/2.2/users/${S
 
 const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
 
-const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-03-01';
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-03-20';
 const GITHUB_USERNAMES = ['poshaughnessy', 'diekus', 'AdaRoseCannon', 'torgo', 'thisisjofrank'];
 // Construct username parameters by adding 'author%3A' in front of each username, followed by a plus
 const GITHUB_USER_PARAMS = GITHUB_USERNAMES.reduce(function(accumulator, value) { return `author%3A${value}+${accumulator}`; }, '');
 const GITHUB_API_PULL_REQUESTS_URL = `https://api.github.com/search/issues?q=${GITHUB_USER_PARAMS}type%3Apr+sort%3Aupdated+created%3A%3E${GITHUB_PULL_REQUESTS_SINCE_DATE}`
+
+// Ignoring personal repos which have a lot of PRs
+const GITHUB_REPOS_IGNORE_LIST = ['AdaRoseCannon/adarosecannon.github.io'];
 
 const upArrow = '↑';
 const downArrow = '↓';
@@ -39,7 +42,7 @@ const noChangeArrow = '‒';
 
 const comparisonDaysDiff = utils.getDaysDiff(stats.updated, comparisonStats.updated);
 
-const proxy = null; //process.env.http_proxy;
+const proxy = process.env.http_proxy;
 let fetchOptions = null;
 
 if (proxy) {
@@ -232,8 +235,14 @@ function updateWithGithubPRs(processedStats, githubPRs) {
 
     processedStats.github.pullrequests.list =
         githubPRs.items.reduce(function(accumulator, value) {
+
             var repo = value.repository_url.replace('https://api.github.com/repos/', '');
-            return `${accumulator}<li>${repo}: <a href="${value.html_url}">${value.title}</a> by <a href="${value.user.html_url}">${value.user.login}</a></li>`;
+
+            if (!GITHUB_REPOS_IGNORE_LIST.includes(repo)) {
+                return `${accumulator}<li>${repo}: <a href="${value.html_url}">${value.title}</a> by <a href="${value.user.html_url}">${value.user.login}</a></li>`;
+            } else {
+                return accumulator;
+            }
         }, '');
 
 }
