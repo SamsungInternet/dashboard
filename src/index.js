@@ -1,4 +1,4 @@
-var twitterSurveyAwarePercent = 37;
+var twitterSurveyAwarePercent = 48;
 var eventSurveyAwarePercent = 42;
 
 function setupSurveyChart(chartId, awarePercent) {
