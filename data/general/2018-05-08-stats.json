@@ -71,18 +71,19 @@
   },
   "seo": {
     "webvr": {
-      "count": 10,
+      "count": 12,
       "link": "https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c"
     },
     "webPayments": {
-      "count": 35,
-      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+      "count": 20,
+      "link": "https://medium.com/samsung-internet-dev/web-payments-update-new-payment-apps-on-their-way-and-more-cef1c62edaf6"
     },
     "pwas": {
+      "count": 12,
       "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
     },
     "webBluetooth": {
-      "count": 31,
+      "count": 33,
       "link": "https://samsunginter.net/docs/web-bluetooth"
     }
   }
