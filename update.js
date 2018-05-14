@@ -10,8 +10,9 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-05-08-stats.json');
-const comparisonStats = require('./data/general/2018-04-09-stats.json');
+const stats = require('./data/general/2018-05-14-stats.json');
+const comparisonStats = require('./data/general/2018-04-16-stats.json');
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-04-01';
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -26,8 +27,6 @@ const STACK_OVERFLOW_ANSWERS_URL = `https://api.stackexchange.com/2.2/users/${ST
 const STACK_OVERFLOW_COMMENTS_URL = `https://api.stackexchange.com/2.2/users/${STACK_OVERFLOW_USER_IDS.join(';')}/comments?site=stackoverflow&order=desc&key=${STACK_OVERFLOW_KEY}&fromdate=${STACK_OVERFLOW_FROM_DATE_SECS}`;
 
 const GITHUB_API_REPOS_URL = 'https://api.github.com/search/repositories?q=org%3Asamsunginternet';
-
-const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-03-20';
 const GITHUB_USERNAMES = ['poshaughnessy', 'diekus', 'AdaRoseCannon', 'torgo', 'thisisjofrank'];
 // Construct username parameters by adding 'author%3A' in front of each username, followed by a plus
 const GITHUB_USER_PARAMS = GITHUB_USERNAMES.reduce(function(accumulator, value) { return `author%3A${value}+${accumulator}`; }, '');
