@@ -10,9 +10,9 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-05-14-stats.json');
-const comparisonStats = require('./data/general/2018-04-16-stats.json');
-const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-04-01';
+const stats = require('./data/general/2018-05-21-stats.json');
+const comparisonStats = require('./data/general/2018-04-24-stats.json');
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-04-21';
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -87,13 +87,13 @@ function processStats(stats, comparisonStats) {
   updateStatWithChange(processedStats, comparisonStats, ['medium', 'audience', 'followers']);
   updateStatWithChange(processedStats, comparisonStats, ['twitter', 'audience', 'followers']);
   updateStatWithChange(processedStats, comparisonStats, ['facebook', 'audience', 'followers']);
-  updateStatWithChange(processedStats, comparisonStats, ['facebook', 'audience', 'reach']);
   updateStatWithChange(processedStats, comparisonStats, ['instagram', 'audience', 'followers']);
 
   updateStatWithChange(processedStats, comparisonStats, ['devHub', 'engagement', 'uniqueVisitors']);
   updateStatWithChange(processedStats, comparisonStats, ['twitter', 'engagement', 'impressions']);
   updateStatWithChange(processedStats, comparisonStats, ['twitter', 'engagement', 'mentions']);
   updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'views']);
+  updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'reach']);
   updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'engagements']);
   updateStatWithChange(processedStats, comparisonStats, ['medium', 'engagement', 'views']);
   updateStatWithChange(processedStats, comparisonStats, ['github', 'issues', 'closeTimeAvg']);

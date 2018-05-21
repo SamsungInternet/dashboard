@@ -43,11 +43,6 @@
           <p class="change"><span class="arrow ${facebook.audience.followers.changeDirection}">${facebook.audience.followers.changeArrow}</span> ${facebook.audience.followers.change} (${changeSinceLabel})</p>
         </div>
         <div>
-          <h3>${facebook.audience.reach.formattedCount}</h3>
-          <p>Facebook reach</p>
-          <p class="change"><span class="arrow ${facebook.audience.reach.changeDirection}">${facebook.audience.reach.changeArrow}</span> ${facebook.audience.reach.change} (${changeSinceLabel})</p>
-        </div>
-        <div>
           <h3>${instagram.audience.followers.formattedCount}</h3>
           <p>Instagram followers</p>
           <p class="change"><span class="arrow ${instagram.audience.followers.changeDirection}">${instagram.audience.followers.changeArrow}</span> ${instagram.audience.followers.change} (${changeSinceLabel})</p>
@@ -72,10 +67,17 @@
           <p class="change"><span class="arrow ${twitter.engagement.mentions.changeDirection}">${twitter.engagement.mentions.changeArrow}</span> ${twitter.engagement.mentions.change}</p>
         </div>
         <div>
+          <h3>${facebook.engagement.reach.formattedCount}</h3>
+          <p>Facebook reach</p>
+          <p class="change"><span class="arrow ${facebook.engagement.reach.changeDirection}">${facebook.engagement.reach.changeArrow}</span> ${facebook.engagement.reach.change} (${changeSinceLabel})</p>
+        </div>
+        <!--
+        <div>
           <h3>${facebook.engagement.views.formattedCount}</h3>
           <p>Facebook page views (28 days)</p>
           <p class="change"><span class="arrow ${facebook.engagement.views.changeDirection}">${facebook.engagement.views.changeArrow}</span> ${facebook.engagement.views.change}</p>
         </div>
+        -->
         <div>
           <h3>${facebook.engagement.engagements.formattedCount}</h3>
           <p>Facebook engagements (28 days)</p>
