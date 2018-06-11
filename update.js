@@ -10,8 +10,8 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-06-05-stats.json');
-const comparisonStats = require('./data/general/2018-05-08-stats.json');
+const stats = require('./data/general/2018-06-11-stats.json');
+const comparisonStats = require('./data/general/2018-05-14-stats.json');
 const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-05-01';
 
 // Load local environment variables from .env
@@ -33,7 +33,7 @@ const GITHUB_USER_PARAMS = GITHUB_USERNAMES.reduce(function(accumulator, value) 
 const GITHUB_API_PULL_REQUESTS_URL = `https://api.github.com/search/issues?q=${GITHUB_USER_PARAMS}type%3Apr+sort%3Aupdated+created%3A%3E${GITHUB_PULL_REQUESTS_SINCE_DATE}`
 
 // Ignoring personal repos which have a lot of PRs
-const GITHUB_REPOS_IGNORE_LIST = ['AdaRoseCannon/adarosecannon.github.io'];
+const GITHUB_REPOS_IGNORE_LIST = ['AdaRoseCannon/adarosecannon.github.io', 'AdaRoseCannon/tech-talks'];
 
 const upArrow = '↑';
 const downArrow = '↓';
