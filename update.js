@@ -10,9 +10,9 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-06-11-stats.json');
-const comparisonStats = require('./data/general/2018-05-14-stats.json');
-const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-05-01';
+const stats = require('./data/general/2018-06-18-stats.json');
+const comparisonStats = require('./data/general/2018-05-21-stats.json');
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-05-15';
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
