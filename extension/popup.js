@@ -1,5 +1,7 @@
 var MEDIUM_OVERVIEW_URL = 'https://medium.com/samsung-internet-dev/stats/overview';
 var MEDIUM_STORIES_URL = 'https://medium.com/samsung-internet-dev/stats/stories';
+var MEDIUM_STORIES_ME_URL = 'https://medium.com/me/stats';
+
 var btnMediumOverview;
 
 // Based on popup sample, copyright (c) 2014 The Chromium Authors
@@ -24,7 +26,7 @@ function updateEnabledButtons() {
       btnMediumOverview.disabled = (url !== MEDIUM_OVERVIEW_URL);
     }
     if (btnMediumStories) {
-      btnMediumStories.disabled = (url !== MEDIUM_STORIES_URL);
+      btnMediumStories.disabled = (url !== MEDIUM_STORIES_URL && url !== MEDIUM_STORIES_ME_URL);
     }
   });
 
@@ -55,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
   btnMediumStories.addEventListener('click', function() {
 
     getCurrentTabUrl(function(url) {
-      if (url === MEDIUM_STORIES_URL) {
+      if (url === MEDIUM_STORIES_URL || url === MEDIUM_STORIES_ME_URL) {
         
         console.log('Medium Stories');
 

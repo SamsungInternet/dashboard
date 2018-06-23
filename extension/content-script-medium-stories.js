@@ -2,11 +2,26 @@
  * Logs the total articles view count to the console
  */
 
-var viewsCount = 0;
+var viewsCountTotal = 0;
 var statsTableBody = document.getElementsByClassName('js-statsTableBody')[0];
 var trs = statsTableBody.getElementsByTagName('tr');
-var printed2017Total = false;
+var years = {
+  '2016': {
+     viewsCount: 0
+   },
+   '2017': {
+     viewsCount: 0
+   },
+   '2018': {
+     viewsCount: 0
+   }
+};
 
+var year;
+
+/**
+ * For each row
+ */
 for (var i=0; i < trs.length; i++) {
   
   var tr = trs[i];
@@ -14,12 +29,12 @@ for (var i=0; i < trs.length; i++) {
   if (tr.children.length < 2) {
 
     // Check date heading
-    if (!printed2017Total && tr.classList.contains('sortableTable-row--dateBucket')) {
+    if (tr.classList.contains('sortableTable-row--dateBucket')) {
       var dateHeading = tr.querySelector('.heading-title');
-      if (dateHeading && dateHeading.innerHTML.indexOf('2017') < 0) {
-        console.log('* 2017 total', viewsCount);
-        printed2017Total = true;
-        continue;
+
+      if (dateHeading) {
+        year = dateHeading.innerHTML;
+        console.log('Now counting for year:', year);
       }
     } 
 
@@ -31,7 +46,23 @@ for (var i=0; i < trs.length; i++) {
   
   console.log('Views', viewsValue);
   
-  viewsCount += parseInt(viewsValue, 10);
+  var viewsInt = parseInt(viewsValue, 10);
+
+  years[year].viewsCount += viewsInt;
+
+  viewsCountTotal += parseInt(viewsValue, 10);
+
 }
 
-console.log('* Total views count', viewsCount);
+var totalCheck = 0;
+
+Object.keys(years).forEach(function(key) {
+  var aYear = key;
+  var yearViewsCount = years[key].viewsCount;
+  console.log('* Views for ' + aYear, yearViewsCount);
+  totalCheck += yearViewsCount;
+});
+
+console.log('* Total views count', viewsCountTotal);
+
+console.log('* Sanity check OK?', viewsCountTotal === totalCheck);
