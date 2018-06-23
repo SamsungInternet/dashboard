@@ -38,9 +38,6 @@
     "audience": {
       "followers": {
         "count": 408
-      },
-      "reach": {
-        "count": 226
       }
     },
     "engagement": {
@@ -52,6 +49,9 @@
       },
       "engagements": {
         "count": 65
+      },
+      "reach": {
+        "count": 226
       }
     }
   },

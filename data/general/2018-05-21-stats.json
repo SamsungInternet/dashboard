@@ -1,64 +1,64 @@
 {
-  "updated": "2018-04-24",
+  "updated": "2018-05-21",
   "devHub": {
     "engagement": {
       "uniqueVisitors": {
-        "count": 16847
+        "count": 16385
       }
     }
   },
   "medium": {
     "audience": {
       "followers": {
-        "count": 2700
+        "count": 2800
       }
     },
     "engagement": {
       "views": {
-        "count": 40778
+        "count": 39383
       }
     }
   },
   "twitter": {
     "audience": {
       "followers": {
-        "count": 1517
+        "count": 1563
       }
     },
     "engagement": {
       "impressions": {
-        "count": 43600
+        "count": 23200
       },
       "mentions": {
-        "count": 205
+        "count": 211
       }
     }
   },
   "facebook": {
     "audience": {
       "followers": {
-        "count": 403
+        "count": 410
       }
     },
     "engagement": {
       "likes": {
-        "count": 23
+        "count": 9
       },
       "views": {
-        "count": 154
+        "count": 66
       },
       "engagements": {
-        "count": 113
+        "count": 71
       },
       "reach": {
-        "count": 459
+        "count": 244
       }
     }
   },
   "instagram": {
     "audience": {
       "followers": {
-        "count": 60
+        "count": 61
       }
     }
   },
@@ -71,19 +71,19 @@
   },
   "seo": {
     "webvr": {
-      "count": 20,
+      "count": 18,
       "link": "https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c"
     },
     "webPayments": {
-      "count": 35,
-      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+      "count": 33,
+      "link": "https://medium.com/samsung-internet-dev/web-payments-update-new-payment-apps-on-their-way-and-more-cef1c62edaf6"
     },
     "pwas": {
-      "count": 12,
+      "count": 14,
       "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
     },
     "webBluetooth": {
-      "count": 29,
+      "count": 42,
       "link": "https://samsunginter.net/docs/web-bluetooth"
     }
   }
