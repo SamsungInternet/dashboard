@@ -1,0 +1,90 @@
+{
+  "updated": "2018-06-25",
+  "devHub": {
+    "engagement": {
+      "uniqueVisitors": {
+        "count": 16710
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 2900
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 45419
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1612
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 147000
+      },
+      "mentions": {
+        "count": 134
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 418
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 8
+      },
+      "views": {
+        "count": 73
+      },
+      "engagements": {
+        "count": 120
+      },
+      "reach": {
+        "count": 789
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 68
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 3
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 9,
+      "link": "https://medium.com/samsung-internet-dev/eleven-examples-of-how-webvr-is-being-used-today-cbcb214b816c"
+    },
+    "webPayments": {
+      "count": 19,
+      "link": "https://medium.com/samsung-internet-dev/web-payments-update-new-payment-apps-on-their-way-and-more-cef1c62edaf6"
+    },
+    "pwas": {
+      "count": 17,
+      "link": "https://medium.com/samsung-internet-dev/6-myths-of-progressive-web-apps-81e28ca9d2b1"
+    },
+    "webBluetooth": {
+      "count": 37,
+      "link": "https://samsunginter.net/docs/web-bluetooth"
+    }
+  }
+}
