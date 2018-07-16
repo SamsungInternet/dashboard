@@ -1,0 +1,90 @@
+{
+  "updated": "2018-07-16",
+  "devHub": {
+    "engagement": {
+      "uniqueVisitors": {
+        "count": 16109
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 3000
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 49127
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1632
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": "?"
+      },
+      "mentions": {
+        "count": "?"
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 425
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 14
+      },
+      "views": {
+        "count": 87
+      },
+      "engagements": {
+        "count": 70
+      },
+      "reach": {
+        "count": 225
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 71
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 3
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 2,
+      "link": "https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API"
+    },
+    "webPayments": {
+      "count": 12,
+      "link": "https://www.smashingmagazine.com/2018/01/online-purchase-payment-request-api/"
+    },
+    "pwas": {
+      "count": 9,
+      "link": "https://developer.mozilla.org/en-US/Apps/Progressive"
+    },
+    "webBluetooth": {
+      "count": 3,
+      "link": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API"
+    }
+  }
+}
