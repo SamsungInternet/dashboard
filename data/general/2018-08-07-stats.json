@@ -1,0 +1,90 @@
+{
+  "updated": "2018-08-07",
+  "devHub": {
+    "engagement": {
+      "uniqueVisitors": {
+        "count": 17210
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 3100
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 41750
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1653
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 62700
+      },
+      "mentions": {
+        "count": 100
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 433
+      }
+    },
+    "engagement": {
+      "likes": {
+        "count": 14
+      },
+      "views": {
+        "count": 63
+      },
+      "engagements": {
+        "count": 40
+      },
+      "reach": {
+        "count": 180
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 75
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 3
+      }
+    }
+  },
+  "seo": {
+    "webvr": {
+      "count": 3,
+      "link": "https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API"
+    },
+    "webPayments": {
+      "count": 13,
+      "link": "https://medium.com/samsung-internet-dev/web-payments-update-new-payment-apps-on-their-way-and-more-cef1c62edaf6"
+    },
+    "pwas": {
+      "count": 8,
+      "link": "https://developer.mozilla.org/en-US/Apps/Progressive"
+    },
+    "webBluetooth": {
+      "count": 4,
+      "link": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API"
+    }
+  }
+}
