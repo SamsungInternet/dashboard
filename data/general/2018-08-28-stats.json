@@ -1,0 +1,58 @@
+{
+  "updated": "2018-08-28",
+  "devHub": {
+    "engagement": {
+      "uniqueVisitors": {
+        "count": 14206
+      }
+    }
+  },
+  "medium": {
+    "audience": {
+      "followers": {
+        "count": 3100
+      }
+    },
+    "engagement": {
+      "views": {
+        "count": 36216
+      }
+    }
+  },
+  "twitter": {
+    "audience": {
+      "followers": {
+        "count": 1692
+      }
+    },
+    "engagement": {
+      "impressions": {
+        "count": 27300
+      },
+      "mentions": {
+        "count": 57
+      }
+    }
+  },
+  "facebook": {
+    "audience": {
+      "followers": {
+        "count": 445
+      }
+    }
+  },
+  "instagram": {
+    "audience": {
+      "followers": {
+        "count": 75
+      }
+    }
+  },
+  "github": {
+    "issues": {
+      "closeTimeAvg": {
+        "count": 3
+      }
+    }
+  }
+}

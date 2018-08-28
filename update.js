@@ -10,9 +10,9 @@ const utils = require('./utils');
 /**
  * Update these appropriately each time. Also see: `src/data-paths.js`.
  */
-const stats = require('./data/general/2018-08-20-stats.json');
+const stats = require('./data/general/2018-08-28-stats.json');
 const comparisonStats = require('./data/general/2018-07-24-stats.json');
-const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-07-01';
+const GITHUB_PULL_REQUESTS_SINCE_DATE = '2018-08-01';
 
 // Load local environment variables from .env
 dotenv.load({silent: true});
@@ -92,16 +92,16 @@ function processStats(stats, comparisonStats) {
   updateStatWithChange(processedStats, comparisonStats, ['devHub', 'engagement', 'uniqueVisitors']);
   updateStatWithChange(processedStats, comparisonStats, ['twitter', 'engagement', 'impressions']);
   updateStatWithChange(processedStats, comparisonStats, ['twitter', 'engagement', 'mentions']);
-  updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'views']);
-  updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'reach']);
-  updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'engagements']);
+//   updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'views']);
+//   updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'reach']);
+//   updateStatWithChange(processedStats, comparisonStats, ['facebook', 'engagement', 'engagements']);
   updateStatWithChange(processedStats, comparisonStats, ['medium', 'engagement', 'views']);
   updateStatWithChange(processedStats, comparisonStats, ['github', 'issues', 'closeTimeAvg']);
 
-  updateStatWithChange(processedStats, comparisonStats, ['seo', 'webvr'], true);
-  updateStatWithChange(processedStats, comparisonStats, ['seo', 'webPayments'], true);
-  updateStatWithChange(processedStats, comparisonStats, ['seo', 'pwas'], true);
-  updateStatWithChange(processedStats, comparisonStats, ['seo', 'webBluetooth'], true);
+//   updateStatWithChange(processedStats, comparisonStats, ['seo', 'webvr'], true);
+//   updateStatWithChange(processedStats, comparisonStats, ['seo', 'webPayments'], true);
+//   updateStatWithChange(processedStats, comparisonStats, ['seo', 'pwas'], true);
+//   updateStatWithChange(processedStats, comparisonStats, ['seo', 'webBluetooth'], true);
 
   // Add some additional data we want to display
   processedStats.lastUpdated = moment(stats.updated).format('DD MMMM YYYY');
@@ -113,10 +113,10 @@ function processStats(stats, comparisonStats) {
         stats.facebook.audience.followers.count +
         stats.instagram.audience.followers.count);
 
-  processedStats.totalImpressions = utils.formatNumberValue(
-        stats.twitter.engagement.impressions.count +
-        stats.facebook.engagement.views.count +
-        stats.medium.engagement.views.count);
+//   processedStats.totalImpressions = utils.formatNumberValue(
+//         stats.twitter.engagement.impressions.count +
+//         stats.facebook.engagement.views.count +
+//         stats.medium.engagement.views.count);
 
   return processedStats;
 
