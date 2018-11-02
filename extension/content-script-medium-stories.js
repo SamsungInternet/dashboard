@@ -1,23 +1,17 @@
 /**
- * Logs the total articles view count to the console
+ * Logs the year's total articles and view count to the console
  */
+
+// Update this each year - it will keep counting until it reaches a heading
+// that doesn't include this year in the string.
+var YEAR_TO_COUNT = '2018';
 
 var viewsCountTotal = 0;
 var statsTableBody = document.getElementsByClassName('js-statsTableBody')[0];
 var trs = statsTableBody.getElementsByTagName('tr');
-var years = {
-  '2016': {
-     viewsCount: 0
-   },
-   '2017': {
-     viewsCount: 0
-   },
-   '2018': {
-     viewsCount: 0
-   }
-};
 
-var year;
+var storiesCount = 0;
+var viewsCount = 0;
 
 /**
  * For each row
@@ -33,36 +27,33 @@ for (var i=0; i < trs.length; i++) {
       var dateHeading = tr.querySelector('.heading-title');
 
       if (dateHeading) {
-        year = dateHeading.innerHTML;
-        console.log('Now counting for year:', year);
-      }
-    } 
 
+        if (dateHeading.innerHTML.includes(YEAR_TO_COUNT)) {
+          console.log('Counting:', dateHeading.innerHTML);
+        } else {
+          console.log(`Reached end of year ${YEAR_TO_COUNT}, stopping counting.`);
+          break;
+        }
+      }
+    }
+
+    // Continue with next 'tr'
     continue;
   }
 
   var viewsTd = tr.children[1];
   var viewsValue = viewsTd.getElementsByClassName('sortableTable-value')[0].innerText;
   
-  console.log('Views', viewsValue);
+  if (viewsValue) {
+    console.log('Views', viewsValue);
   
-  var viewsInt = parseInt(viewsValue, 10);
-
-  years[year].viewsCount += viewsInt;
-
-  viewsCountTotal += parseInt(viewsValue, 10);
+    var viewsInt = parseInt(viewsValue, 10);
+  
+    viewsCount += viewsInt;
+    storiesCount++;
+  }
 
 }
 
-var totalCheck = 0;
-
-Object.keys(years).forEach(function(key) {
-  var aYear = key;
-  var yearViewsCount = years[key].viewsCount;
-  console.log('* Views for ' + aYear, yearViewsCount);
-  totalCheck += yearViewsCount;
-});
-
-console.log('* Total views count', viewsCountTotal);
-
-console.log('* Sanity check OK?', viewsCountTotal === totalCheck);
+console.log('* Number of stories for ' + YEAR_TO_COUNT, storiesCount);
+console.log('* Total views for ' + YEAR_TO_COUNT, viewsCount);
